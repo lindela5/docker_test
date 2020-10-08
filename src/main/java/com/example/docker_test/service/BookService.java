@@ -19,7 +19,7 @@ public class BookService {
 
     public BookEntity getBookStats(Long id){
         BookEntity book= bookRepository.findById(id);
-      //  String result="{ID : "+book.getId().toString()+",Title : "+book.getTitle()+",Author :"+ book.getAuthor()+",Year of issue :"+ book.getYearOfIssue()+" }";
+
 
         return book;
     }
