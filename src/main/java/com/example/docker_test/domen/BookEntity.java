@@ -1,8 +1,7 @@
 package com.example.docker_test.domen;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,7 +17,7 @@ public class BookEntity {
 
     private String title;
     private String author;
-    private int yearOfIssue;
+    private Integer yearOfIssue;
 
 
 }
