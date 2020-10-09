@@ -1,7 +1,7 @@
-package com.example.docker_test.mappers;
+package com.innowise.darya.transformer;
 
-import com.example.docker_test.domen.BookEntity;
-import com.example.docker_test.dto.BookEntityDTO;
+import com.innowise.darya.entity.BookEntity;
+import com.innowise.darya.dto.BookEntityDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;

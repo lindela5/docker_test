@@ -1,13 +1,11 @@
-package com.example.docker_test;
+package com.innowise.darya;
 
-import org.junit.jupiter.api.Test;
+
 import org.springframework.boot.test.context.SpringBootTest;
+
 
 @SpringBootTest
 class DockerTestApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
 
 }

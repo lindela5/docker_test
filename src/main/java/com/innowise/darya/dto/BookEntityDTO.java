@@ -1,8 +1,10 @@
-package com.example.docker_test.dto;
+package com.innowise.darya.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder(builderMethodName = "aBookEntityDTO")
 public class BookEntityDTO {
 
     private Long bookId;

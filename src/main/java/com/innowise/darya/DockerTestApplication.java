@@ -1,4 +1,4 @@
-package com.example.docker_test;
+package com.innowise.darya;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

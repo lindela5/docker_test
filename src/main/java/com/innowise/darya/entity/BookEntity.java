@@ -1,5 +1,6 @@
-package com.example.docker_test.domen;
+package com.innowise.darya.entity;
 
+import lombok.Builder;
 import lombok.Data;
 
 
@@ -10,6 +11,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "books")
 @Data
+@Builder(builderMethodName = "aBookEntity")
 public class BookEntity {
 
     @Id

@@ -1,7 +1,8 @@
-package com.example.docker_test.service;
+package com.innowise.darya.service;
 
-import com.example.docker_test.domen.BookEntity;
-import com.example.docker_test.repositoty.BookRepository;
+import com.innowise.darya.entity.BookEntity;
+import com.innowise.darya.exception.ThereIsNoSuchBookException;
+import com.innowise.darya.repositoty.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +20,9 @@ public class BookService {
 
     public BookEntity getBookStats(Long id){
         BookEntity book= bookRepository.findById(id);
-
-
+        if (book == null) {
+            throw new ThereIsNoSuchBookException();
+        }
         return book;
     }
 }
