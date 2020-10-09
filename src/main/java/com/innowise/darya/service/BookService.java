@@ -23,6 +23,7 @@ public class BookService {
         if (book == null) {
             throw new ThereIsNoSuchBookException();
         }
+
         return book;
     }
 }

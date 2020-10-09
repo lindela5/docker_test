@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
 import static com.innowise.darya.dto.BookEntityDTO.aBookEntityDTO;
-import static  com.innowise.darya.entity.BookEntity.aBookEntity;
-import static org.junit.jupiter.api.Assertions.*;
+import static com.innowise.darya.entity.BookEntity.aBookEntity;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BookDTOTransformerTest {
 
@@ -22,8 +22,6 @@ class BookDTOTransformerTest {
                     .bookAuthor(BOOK_AUTHOR)
                     .bookTitle(BOOK_TITLE)
                     .build();
-    //@formatter=on
-
 
     static final BookEntity BOOK_ENTITY =
             aBookEntity()
@@ -31,19 +29,20 @@ class BookDTOTransformerTest {
                     .author(BOOK_AUTHOR)
                     .title(BOOK_TITLE)
                     .build();
+    //@formatter=on
 
     @Test
     public void shouldReturnBookEntityDTO() {
 
         BookEntity actualEntity = TRANSFORMER.bookEntityDTOtoBookEntity(BOOK_ENTITY_DTO);
 
-        assertEquals(BOOK_ENTITY_DTO .getBookId(), actualEntity.getId());
-        assertEquals(BOOK_ENTITY_DTO .getBookTitle(), actualEntity.getTitle());
-        assertEquals(BOOK_ENTITY_DTO .getBookTitle(), actualEntity.getTitle());
+        assertEquals(BOOK_ENTITY_DTO.getBookId(), actualEntity.getId());
+        assertEquals(BOOK_ENTITY_DTO.getBookTitle(), actualEntity.getTitle());
+        assertEquals(BOOK_ENTITY_DTO.getBookTitle(), actualEntity.getTitle());
     }
 
     @Test
-    public void shouldReturnBookEntity()  {
+    public void shouldReturnBookEntity() {
 
         BookEntityDTO bookDto = TRANSFORMER.bookEntityToBookEntityDTO(BOOK_ENTITY);
 
