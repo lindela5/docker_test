@@ -10,7 +10,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=postgres
-      - POSTGRES_DB=libdb
+      - POSTGRES_DB=bookshop
   # APP*****************************************
   springbootapp:
     image: springbootapp:latest

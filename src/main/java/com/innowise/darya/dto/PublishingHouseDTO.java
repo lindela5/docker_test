@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -18,7 +19,7 @@ public class PublishingHouseDTO {
     private String publisherAddress;
 
 
-    private Set<BookEntityDTO> publisherBooks;// = new HashSet<>();
+    private Set<BookEntityDTO> publisherBooks = new HashSet<>();
 
 
 }

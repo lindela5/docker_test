@@ -33,7 +33,7 @@ public class BookEntity {
     private Integer yearOfIssue;
 
     @NotBlank
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private PublishingHouse publisher;
 
 

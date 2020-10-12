@@ -24,6 +24,6 @@ public class PublishingHouse {
     private String address;
 
     @OneToMany(mappedBy = "publisher")
-    private Set<BookEntity> publisherBooks = new HashSet<>();
+    private Set<BookEntity> publisher_Books = new HashSet<>();
 
 }
