@@ -4,6 +4,7 @@ import com.innowise.darya.entity.BookEntity;
 import com.innowise.darya.dto.BookEntityDTO;
 import com.innowise.darya.transformer.BookDTOTransformer;
 import com.innowise.darya.service.BookService;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "/book")
+@Log
 public class BookController {
 
     private final BookService bookService;
@@ -28,6 +30,7 @@ public class BookController {
 
     public ResponseEntity<BookEntityDTO> getBookStats(@PathVariable final Long id) {
         BookEntity book = bookService.getBookStats(id);
+       // log.info("Автор книги - "+book.getAuthor()+" название - "+ book.getTitle());
         BookEntityDTO bookEntityDTO = BookDTOTransformer.TRANSFORMER.bookEntityToBookEntityDTO(book);
         return ResponseEntity.ok(bookEntityDTO);
     }

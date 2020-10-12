@@ -1,7 +1,6 @@
 package com.innowise.darya.service;
 
 
-import com.innowise.darya.dto.BookEntityDTO;
 import com.innowise.darya.entity.BookEntity;
 import com.innowise.darya.exception.ThereIsNoSuchBookException;
 import com.innowise.darya.repositoty.BookRepository;
@@ -11,7 +10,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static com.innowise.darya.dto.BookEntityDTO.aBookEntityDTO;
 import static com.innowise.darya.entity.BookEntity.aBookEntity;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -20,12 +18,13 @@ import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.only;
 
 @ExtendWith(MockitoExtension.class)
+        // добавим к тестовому классу расширение Mockito.
 class BookServiceTest {
 
-    @Mock
+    @Mock //создаем заглушку (или макет)
     BookRepository bookRepository;
 
-    @InjectMocks
+    @InjectMocks //создает экземпляр класса и внедряет @Mock созданные с @Mock (или @Spy) в этот экземпляр
     BookService bookService;
 
     private static final Long WRONG_ID = 4L;
@@ -50,11 +49,11 @@ class BookServiceTest {
 
     }
 
-   @Test
-    public void shouldReturnBookStat () {
+    @Test
+    public void shouldReturnBookStat() {
         given(bookRepository.findById(BOOK_ID)).willReturn(BOOK_ENTITY);
         BookEntity actual = bookService.getBookStats(BOOK_ID);
-        assertEquals(BOOK_ENTITY,actual);
+        assertEquals(BOOK_ENTITY, actual);
         then(bookRepository).should(only()).findById(BOOK_ID);
 
     }
