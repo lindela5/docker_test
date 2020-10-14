@@ -30,8 +30,8 @@ public class BookController {
 
     public ResponseEntity<BookEntityDTO> getBookStats(@PathVariable final Long id) {
         BookEntity book = bookService.getBookStats(id);
-       // log.info("Автор книги - "+book.getAuthor()+" название - "+ book.getTitle());
-        BookEntityDTO bookEntityDTO = BookDTOTransformer.TRANSFORMER.bookEntityToBookEntityDTO(book);
+        log.info("Isbn книги - "+book.getIsbn()+" название - "+ book.getTitle());
+        BookEntityDTO bookEntityDTO = BookDTOTransformer.BOOK_DTO_TRANSFORMER.bookEntityToBookEntityDTO(book);
         return ResponseEntity.ok(bookEntityDTO);
     }
 }

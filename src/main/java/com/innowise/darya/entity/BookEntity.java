@@ -19,25 +19,31 @@ import java.util.Set;
 public class BookEntity {
 
     @Id
-    private Long id;
+    private Long bookId;
 
+    @Column(name = "title")
     private String title;
 
+    @Column(name = "author")
     @NotBlank
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<Author> authors = new HashSet<>();
+            inverseJoinColumns = @JoinColumn(name = "authorId"))
+    private Set<Author> author = new HashSet<>();
 
+    @Column(name = "isbn")
     private String isbn;
+    @Column(name = "year_of_issue")
     private Integer yearOfIssue;
 
+    @Column(name = "publisher")
     @NotBlank
     @ManyToOne(cascade = CascadeType.ALL)
     private PublishingHouse publisher;
 
-
+    @Column(name = "price")
     private int price;
+    @Column(name = "stock_balances")
     private Integer stockBalances;
 
 

@@ -19,7 +19,5 @@ public class AuthorDTO {
     private String authorLastName;
     private String authorCountry;
 
-    private Set<BookEntityDTO> authorBooks = new HashSet<>();
-
 
 }

@@ -5,10 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,14 +18,17 @@ import java.util.Set;
 public class Author {
 
     @Id
-    private Long author_id;
+    private Long authorId;
 
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
+    @Column(name = "country")
     private String country;
 
     @ManyToMany(mappedBy = "authors")
-    private Set<BookEntity> author_Books = new HashSet<>();
+    private Set<BookEntity> authorBooks = new HashSet<>();
 
 
 }

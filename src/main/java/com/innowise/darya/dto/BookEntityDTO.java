@@ -1,9 +1,14 @@
 package com.innowise.darya.dto;
 
+import com.innowise.darya.entity.Author;
+import com.innowise.darya.entity.PublishingHouse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -13,7 +18,12 @@ public class BookEntityDTO {
 
     private Long bookId;
     private String bookTitle;
-    private String bookAuthor;
+    private Set<Author> bookAuthor = new HashSet<>();
+    private String isbn;
+    private Integer yearOfIssue;
+    private PublishingHouse publisher;
+    private int price;
+    private Integer stockBalances;
 
 
 }

@@ -6,8 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "publishingHouse")
@@ -18,12 +18,13 @@ import java.util.Set;
 public class PublishingHouse {
 
     @Id
-    private Long publisher_id;
-
+    private Long publisherId;
+    @Column(name = "name_publisher")
     private String namePublisher;
+    @Column(name = "address")
     private String address;
 
     @OneToMany(mappedBy = "publisher")
-    private Set<BookEntity> publisher_Books = new HashSet<>();
+    private List<BookEntity> publisherBooks = new ArrayList<>();
 
 }
