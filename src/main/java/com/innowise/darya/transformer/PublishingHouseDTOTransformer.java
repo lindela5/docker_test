@@ -12,16 +12,16 @@ public interface PublishingHouseDTOTransformer {
     PublishingHouseDTOTransformer PUBLISHING_HOUSE_DTO_TRANSFORMER = Mappers.getMapper(PublishingHouseDTOTransformer.class);
 
     @Mappings({
-            @Mapping(target = "publisherId", source = "entity.id"),
-            @Mapping(target = "publisherName", source = "entity.title"),
-            @Mapping(target = "publisherAddress", source = "entity.author")
+            @Mapping(target = "publisherId", source = "entity.publisherId"),
+            @Mapping(target = "publisherName", source = "entity.namePublisher"),
+            @Mapping(target = "publisherAddress", source = "entity.address")
     })
     PublishingHouseDTO publishingHouseToPublishingHouseDTO(PublishingHouse entity);
 
     @Mappings({
-            @Mapping(target = "id", source = "dto.publisherId"),
-            @Mapping(target = "title", source = "dto.publisherName"),
-            @Mapping(target = "author", source = "dto.publisherAddress")
+            @Mapping(target = "publisherId", source = "dto.publisherId"),
+            @Mapping(target = "namePublisher", source = "dto.publisherName"),
+            @Mapping(target = "address", source = "dto.publisherAddress")
     })
     PublishingHouse publishingHouseDTOToBookEntity(PublishingHouseDTO dto);
 }

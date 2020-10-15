@@ -21,8 +21,8 @@ public class BookService {
     }
 
 
-    public BookEntity getBookStats(Long id) {
-        BookEntity book = bookRepository.findById(id);
+    public BookEntity getBookStats(Long bookId) {
+        BookEntity book = bookRepository.findByBookId(bookId);
         if (book == null) {
             log.error("There is no such book");
             throw new ThereIsNoSuchBookException();

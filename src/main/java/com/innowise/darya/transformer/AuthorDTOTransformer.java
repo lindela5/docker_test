@@ -17,7 +17,7 @@ public interface AuthorDTOTransformer {
             @Mapping(target = "authorLastName", source = "entity.lastName"),
             @Mapping(target = "authorCountry", source = "entity.country")
     })
-    AuthorDTO AuthorToAuthorDTO(Author entity);
+    AuthorDTO authorToAuthorDTO(Author entity);
 
     @Mappings({
             @Mapping(target = "authorId", source = "dto.authorId"),
@@ -25,5 +25,5 @@ public interface AuthorDTOTransformer {
             @Mapping(target = "lastName", source = "dto.authorLastName"),
             @Mapping(target = "country", source = "dto.authorCountry")
     })
-    Author AuthorDTOToAuthor(AuthorDTO dto);
+    Author authorDTOToAuthor(AuthorDTO dto);
 }

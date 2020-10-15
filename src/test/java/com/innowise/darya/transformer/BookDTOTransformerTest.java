@@ -8,7 +8,7 @@ import org.mapstruct.factory.Mappers;
 import static com.innowise.darya.dto.BookEntityDTO.aBookEntityDTO;
 import static com.innowise.darya.entity.BookEntity.aBookEntity;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+/*
 class BookDTOTransformerTest {
 
     static final BookDTOTransformer TRANSFORMER = Mappers.getMapper(BookDTOTransformer.class);
@@ -50,4 +50,4 @@ class BookDTOTransformerTest {
         assertEquals(BOOK_ENTITY.getTitle(), bookDto.getBookTitle());
         assertEquals(BOOK_ENTITY.getTitle(), bookDto.getBookTitle());
     }
-}
+}*/

@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.only;
-
+/*
 @ExtendWith(MockitoExtension.class)
         // добавим к тестовому классу расширение Mockito.
 class BookServiceTest {
@@ -58,4 +58,4 @@ class BookServiceTest {
 
     }
 
-}
+}*/
