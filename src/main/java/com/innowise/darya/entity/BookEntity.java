@@ -24,7 +24,7 @@ public class BookEntity {
     @Column(name = "title")
     private String title;
 
-   // @NotBlank
+    @NotBlank
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "bookId"),
             inverseJoinColumns = @JoinColumn(name = "authorId"))
@@ -35,8 +35,8 @@ public class BookEntity {
     @Column(name = "year_of_issue")
     private Integer yearOfIssue;
 
-    //@NotBlank
-    @ManyToOne(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
+    @NotBlank
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="publishing_house_id")
     private PublishingHouse publishingHouse;
 

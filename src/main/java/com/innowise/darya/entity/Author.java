@@ -27,7 +27,7 @@ public class Author {
     @Column(name = "country")
     private String country;
 
-    @ManyToMany(mappedBy = "authors")
+    @ManyToMany(mappedBy = "author")
     private Set<BookEntity> authorBooks = new HashSet<>();
 
 

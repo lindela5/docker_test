@@ -14,6 +14,4 @@ public class PublishingHouseDTO {
     private Long publishingHouseId;
     private String publisherName;
     private String publisherAddress;
-
-
 }

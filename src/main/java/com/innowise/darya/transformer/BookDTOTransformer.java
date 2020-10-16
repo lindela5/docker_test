@@ -31,5 +31,5 @@ public interface BookDTOTransformer {
     })*/
     @InheritInverseConfiguration
     //Аннотация определяет, что обратное отображение @InheritInverseConfiguration должно быть выполнено.
-    BookEntity bookEntityDTOtoBookEntity(BookEntityDTO dto);
+    BookEntity bookEntityDTOToBookEntity(BookEntityDTO dto);
 }

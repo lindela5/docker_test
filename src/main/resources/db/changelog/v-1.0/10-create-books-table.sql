@@ -1,9 +1,9 @@
 CREATE TABLE books (
-    book_id         int ,
-    title       VARCHAR(100),
+    book_id  int NOT NULL,
+    title  VARCHAR(100) NOT NULL,
     isbn   VARCHAR(100),
     year_of_issue int ,
-    publisher_id int,
+    publishing_house_id int NOT NULL,
     price     int,
     stock_balances int,
     PRIMARY KEY (book_id)

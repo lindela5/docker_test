@@ -18,6 +18,22 @@
         <tagDatabase tag="v.1.0"/>
     </changeSet>
 
+    <include file="v-2.0/db.changelog-v.2.0.xml" relativeToChangelogFile="true"/>
 
+    <changeSet id="11" author="sinitsa">
+        <tagDatabase tag="v.2.0"/>
+    </changeSet>
+
+    <include file="v-3.0/db.changelog-v.3.0.xml" relativeToChangelogFile="true"/>
+
+    <changeSet id="16" author="sinitsa">
+        <tagDatabase tag="v.3.0"/>
+    </changeSet>
+
+    <include file="v-4.0/db.changelog-v.4.0.xml" relativeToChangelogFile="true"/>
+
+    <changeSet id="20" author="sinitsa">
+        <tagDatabase tag="v.4.0"/>
+    </changeSet>
 
 </databaseChangeLog>

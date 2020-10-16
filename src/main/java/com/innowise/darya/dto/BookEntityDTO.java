@@ -24,6 +24,4 @@ public class BookEntityDTO {
     private PublishingHouse publishingHouse;
     private int price;
     private Integer stockBalances;
-
-
 }
