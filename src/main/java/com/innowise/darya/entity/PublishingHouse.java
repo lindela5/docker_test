@@ -18,13 +18,13 @@ import java.util.List;
 public class PublishingHouse {
 
     @Id
-    private Long publisherId;
+    private Long publishingHouseId;
     @Column(name = "name_publisher")
     private String namePublisher;
     @Column(name = "address")
     private String address;
 
-    @OneToMany(mappedBy = "publisher")
-    private List<BookEntity> publisherBooks = new ArrayList<>();
+    @OneToMany(mappedBy = "publishingHouse")
+    private List<BookEntity> bookEntities = new ArrayList<>();
 
 }

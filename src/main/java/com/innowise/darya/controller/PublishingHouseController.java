@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "/publisherHouse")
+@RequestMapping(path = "/publishingHouse")
 public class PublishingHouseController {
 
     private PublishingHouseService publishingHouseService;
@@ -23,11 +23,11 @@ public class PublishingHouseController {
         this.publishingHouseService = publishingHouseService;
     }
 
-    @GetMapping(value = "{publisherId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "{publishingHouseId}", produces = MediaType.APPLICATION_JSON_VALUE)
 
 
-    public ResponseEntity<PublishingHouseDTO> getPublishingHouseStats(@PathVariable final Long publisherId) {
-        PublishingHouse publisher = publishingHouseService.getPublisherStats(publisherId);
+    public ResponseEntity<PublishingHouseDTO> getPublishingHouseStats(@PathVariable final Long publishingHouseId) {
+        PublishingHouse publisher = publishingHouseService.getPublisherStats(publishingHouseId);
         PublishingHouseDTO publisherDTO = PublishingHouseDTOTransformer
                 .PUBLISHING_HOUSE_DTO_TRANSFORMER.publishingHouseToPublishingHouseDTO(publisher);
         return ResponseEntity.ok(publisherDTO);

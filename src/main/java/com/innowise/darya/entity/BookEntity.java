@@ -27,7 +27,7 @@ public class BookEntity {
     @Column(name = "author")
     @NotBlank
     @ManyToMany
-    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "id"),
+    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "bookId"),
             inverseJoinColumns = @JoinColumn(name = "authorId"))
     private Set<Author> author = new HashSet<>();
 
@@ -36,10 +36,10 @@ public class BookEntity {
     @Column(name = "year_of_issue")
     private Integer yearOfIssue;
 
-    @Column(name = "publisher")
+    @Column(name = "publishing_house")
     @NotBlank
     @ManyToOne(cascade = CascadeType.ALL)
-    private PublishingHouse publisher;
+    private PublishingHouse publishingHouse;
 
     @Column(name = "price")
     private int price;

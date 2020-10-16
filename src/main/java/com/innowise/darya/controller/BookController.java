@@ -25,11 +25,11 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "{bookId}", produces = MediaType.APPLICATION_JSON_VALUE)
 
 
-    public ResponseEntity<BookEntityDTO> getBookStats(@PathVariable final Long id) {
-        BookEntity book = bookService.getBookStats(id);
+    public ResponseEntity<BookEntityDTO> getBookStats(@PathVariable final Long bookId) {
+        BookEntity book = bookService.getBookStats(bookId);
         log.info("Isbn книги - "+book.getIsbn()+" название - "+ book.getTitle());
         BookEntityDTO bookEntityDTO = BookDTOTransformer.BOOK_DTO_TRANSFORMER.bookEntityToBookEntityDTO(book);
         return ResponseEntity.ok(bookEntityDTO);

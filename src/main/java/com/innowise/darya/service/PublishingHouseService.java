@@ -18,8 +18,8 @@ public class PublishingHouseService {
     }
 
 
-    public PublishingHouse getPublisherStats(Long publisherId) {
-        PublishingHouse publisher = publishingHouseRepository.findByPublisherId(publisherId);
+    public PublishingHouse getPublisherStats(Long publishingHouseId) {
+        PublishingHouse publisher = publishingHouseRepository.findByPublisherId(publishingHouseId);
         /*if (publisher == null) {
             throw new ThereIsNoSuchBookException();
         }

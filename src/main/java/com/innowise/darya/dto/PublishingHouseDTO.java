@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder(builderMethodName = "auPublishingHouseDTO")
 public class PublishingHouseDTO {
 
-    private Long publisherId;
+    private Long publishingHouseId;
     private String publisherName;
     private String publisherAddress;
 

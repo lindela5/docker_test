@@ -21,7 +21,7 @@ public class BookEntityDTO {
     private Set<Author> bookAuthor = new HashSet<>();
     private String isbn;
     private Integer yearOfIssue;
-    private PublishingHouse publisher;
+    private PublishingHouse publishingHouse;
     private int price;
     private Integer stockBalances;
 
