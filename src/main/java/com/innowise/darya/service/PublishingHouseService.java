@@ -19,7 +19,7 @@ public class PublishingHouseService {
 
 
     public PublishingHouse getPublisherStats(Long publishingHouseId) {
-        PublishingHouse publisher = publishingHouseRepository.findByPublisherId(publishingHouseId);
+        PublishingHouse publisher = publishingHouseRepository.findByPublishingHouseId(publishingHouseId);
         /*if (publisher == null) {
             throw new ThereIsNoSuchBookException();
         }

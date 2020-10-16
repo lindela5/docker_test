@@ -1,13 +1,9 @@
 package com.innowise.darya.controller;
 
 import com.innowise.darya.dto.AuthorDTO;
-import com.innowise.darya.dto.BookEntityDTO;
 import com.innowise.darya.entity.Author;
-import com.innowise.darya.entity.BookEntity;
 import com.innowise.darya.service.AuthorService;
-import com.innowise.darya.service.BookService;
 import com.innowise.darya.transformer.AuthorDTOTransformer;
-import com.innowise.darya.transformer.BookDTOTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

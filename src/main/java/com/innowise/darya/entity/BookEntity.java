@@ -24,8 +24,7 @@ public class BookEntity {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "author")
-    @NotBlank
+   // @NotBlank
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "bookId"),
             inverseJoinColumns = @JoinColumn(name = "authorId"))
@@ -36,9 +35,9 @@ public class BookEntity {
     @Column(name = "year_of_issue")
     private Integer yearOfIssue;
 
-    @Column(name = "publishing_house")
-    @NotBlank
-    @ManyToOne(cascade = CascadeType.ALL)
+    //@NotBlank
+    @ManyToOne(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name="publishing_house_id")
     private PublishingHouse publishingHouse;
 
     @Column(name = "price")
