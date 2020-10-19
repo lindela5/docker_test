@@ -20,15 +20,12 @@ public class Author {
     @Id
     private Long authorId;
 
-    @Column(name = "first_name")
     private String firstName;
-    @Column(name = "last_name")
     private String lastName;
-    @Column(name = "country")
     private String country;
 
     @ManyToMany(mappedBy = "author")
-    private Set<BookEntity> authorBooks = new HashSet<>();
+    private Set<Book> authorBooks = new HashSet<>();
 
 
 }

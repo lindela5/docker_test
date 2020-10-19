@@ -1,21 +1,8 @@
 package com.innowise.darya.service;
 
 
-import com.innowise.darya.entity.BookEntity;
-import com.innowise.darya.exception.ThereIsNoSuchBookException;
-import com.innowise.darya.repositoty.BookRepository;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-
-import static com.innowise.darya.entity.BookEntity.aBookEntity;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.BDDMockito.then;
-import static org.mockito.Mockito.only;
 /*
 @ExtendWith(MockitoExtension.class)
         // добавим к тестовому классу расширение Mockito.

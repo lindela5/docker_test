@@ -1,12 +1,5 @@
 package com.innowise.darya.transformer;
 
-import com.innowise.darya.dto.BookEntityDTO;
-import com.innowise.darya.entity.BookEntity;
-import org.junit.jupiter.api.Test;
-import org.mapstruct.factory.Mappers;
-
-import static com.innowise.darya.dto.BookEntityDTO.aBookEntityDTO;
-import static com.innowise.darya.entity.BookEntity.aBookEntity;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 /*
 class BookDTOTransformerTest {

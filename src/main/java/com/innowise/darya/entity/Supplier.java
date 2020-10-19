@@ -4,23 +4,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "supplier")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Customer {
-    @Id
-    private Long customerId;
+public class Supplier {
 
-    private String firstName;
-    private String lastName;
+    @Id
+    private Long id;
+
+    private String supplierName;
     private String address;
     private String phone;
-    private String email;
+
 }

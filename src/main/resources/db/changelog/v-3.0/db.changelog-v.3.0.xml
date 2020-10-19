@@ -5,7 +5,16 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <include file="01-changeset-customer-table.xml" relativeToChangelogFile="true"/>
-    <include file="10-changeset-sale-table.xml" relativeToChangelogFile="true"/>
+    <include file="01-insert-authors-table.sql" relativeToChangelogFile="true"/>
+    <include file="05-insert-books-table.sql" relativeToChangelogFile="true"/>
+    <include file="08-insert-author-book-table.sql" relativeToChangelogFile="true"/>
+    <include file="10-insert-customer-table.sql" relativeToChangelogFile="true"/>
+    <include file="15-insert-orders-table.sql" relativeToChangelogFile="true"/>
+    <include file="18-insert-book-order-table.sql" relativeToChangelogFile="true"/>
+    <include file="20-insert-publishing-houses-table.sql" relativeToChangelogFile="true"/>
+    <include file="25-insert-section-table.sql" relativeToChangelogFile="true"/>
+    <include file="30-insert-supplier-table.sql" relativeToChangelogFile="true"/>
+    <include file="35-insert-supply-table.sql" relativeToChangelogFile="true"/>
+    <include file="38-insert-book-supply-table.sql" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

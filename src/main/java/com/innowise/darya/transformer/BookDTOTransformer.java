@@ -1,7 +1,7 @@
 package com.innowise.darya.transformer;
 
-import com.innowise.darya.dto.BookEntityDTO;
-import com.innowise.darya.entity.BookEntity;
+import com.innowise.darya.dto.BookDTO;
+import com.innowise.darya.entity.Book;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -17,12 +17,13 @@ public interface BookDTOTransformer {
             @Mapping(target = "bookTitle", source = "entity.title"),
             @Mapping(target = "bookAuthor", source = "entity.author"),
             @Mapping(target = "isbn", source = "entity.isbn"),
+            @Mapping(target = "section", source = "entity.section"),
             @Mapping(target = "yearOfIssue", source = "entity.yearOfIssue"),
             @Mapping(target = "publishingHouse", source = "entity.publishingHouse"),
             @Mapping(target = "price", source = "entity.price"),
             @Mapping(target = "stockBalances", source = "entity.stockBalances")
     })
-    BookEntityDTO bookEntityToBookEntityDTO(BookEntity entity);
+    BookDTO bookToBookDTO(Book entity);
 
     /*@Mappings({
             @Mapping(target="id", source="dto.bookId"),
@@ -31,5 +32,5 @@ public interface BookDTOTransformer {
     })*/
     @InheritInverseConfiguration
     //Аннотация определяет, что обратное отображение @InheritInverseConfiguration должно быть выполнено.
-    BookEntity bookEntityDTOToBookEntity(BookEntityDTO dto);
+    Book bookDTOToBook(BookDTO dto);
 }

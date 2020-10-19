@@ -6,7 +6,16 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <include file="01-changeset-authors-table.xml" relativeToChangelogFile="true"/>
-    <include file="10-changeset-books-table.xml" relativeToChangelogFile="true"/>
+    <include file="05-changeset-books-table.xml" relativeToChangelogFile="true"/>
+    <include file="08-changeset-author-book-table.xml" relativeToChangelogFile="true"/>
+    <include file="10-changeset-customer-table.xml" relativeToChangelogFile="true"/>
+    <include file="15-changeset-orders-table.xml" relativeToChangelogFile="true"/>
+    <include file="18-changeset-book-order-table.xml" relativeToChangelogFile="true"/>
     <include file="20-changeset-publishing-houses-table.xml" relativeToChangelogFile="true"/>
+    <include file="25-changeset-section-table.xml" relativeToChangelogFile="true"/>
+    <include file="30-changeset-supplier-table.xml" relativeToChangelogFile="true"/>
+    <include file="35-changeset-supply-table.xml" relativeToChangelogFile="true"/>
+    <include file="38-changeset-book-supply-table.xml" relativeToChangelogFile="true"/>
+
 
 </databaseChangeLog>

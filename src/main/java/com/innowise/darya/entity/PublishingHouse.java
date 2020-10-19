@@ -19,12 +19,10 @@ public class PublishingHouse {
 
     @Id
     private Long publishingHouseId;
-    @Column(name = "name_publisher")
     private String namePublisher;
-    @Column(name = "address")
     private String address;
 
     @OneToMany(mappedBy = "publishingHouse")
-    private Set<BookEntity> bookEntities = new HashSet<>();
+    private Set<Book> bookEntities = new HashSet<>();
 
 }

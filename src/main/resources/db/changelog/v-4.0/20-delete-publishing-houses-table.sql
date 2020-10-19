@@ -1,1 +1,0 @@
-DELETE FROM publishing_house;

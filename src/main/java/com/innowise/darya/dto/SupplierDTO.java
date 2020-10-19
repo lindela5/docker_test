@@ -1,0 +1,16 @@
+package com.innowise.darya.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class SupplierDTO {
+
+    private Long id;
+    private String supplierName;
+    private String address;
+    private String phone;
+}
