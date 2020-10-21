@@ -2,17 +2,16 @@
 --changeset sinitsa:25-insert-sections-table
 
 
-INSERT INTO author (id, name_section) VALUES
+INSERT INTO sections (id, name_section) VALUES
     (1, 'Detective' ),
     (2, 'Fantasy'),
-    (3, ''),
-    (4, 'United Kingdom'),
-    (5, 'United Kingdom'),
-    (6, 'United Kingdom'),
-    (7, 'Russia'),
-    (8, 'United Kingdom'),
-    (9, 'United Kingdom');
+    (3, 'Adventure'),
+    (4, 'Classic'),
+    (5, 'Drama'),
+    (6, 'Horror'),
+    (7, 'Mystery');
 GO
 
 
---rollback DELETE FROM author;
+
+--rollback DELETE FROM sections;

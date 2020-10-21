@@ -1,7 +1,7 @@
 CREATE TABLE orders (
     order_id         int NOT NULL,
     customer_id   int NOT NULL,
-    sale_date date ,
+    order_date date ,
     amount    DECIMAL NOT NULL,
     PRIMARY KEY (order_id)
 );
