@@ -15,12 +15,12 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder(builderMethodName = "aBookDTO")
+@Builder //(builderMethodName = "aBookDTO")
 public class BookDTO {
 
     private Long bookId;
     private String bookTitle;
-    private Set<Author> bookAuthor = new HashSet<>();
+ //   private Set<AuthorDTO> bookAuthor = new HashSet<>();
     private String isbn;
     private Section section;
     private Integer yearOfIssue;
