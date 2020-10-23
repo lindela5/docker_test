@@ -12,7 +12,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder(builderMethodName = "aAuthorDTO")
+@Builder
 public class AuthorDTO {
 
     private Long authorId;

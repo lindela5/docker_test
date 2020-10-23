@@ -23,5 +23,5 @@ public interface PublishingHouseDTOTransformer {
             @Mapping(target = "namePublisher", source = "dto.publisherName"),
             @Mapping(target = "address", source = "dto.publisherAddress")
     })
-    PublishingHouse publishingHouseDTOToBookEntity(PublishingHouseDTO dto);
+    PublishingHouse publishingHouseDTOToPublishingHouse(PublishingHouseDTO dto);
 }

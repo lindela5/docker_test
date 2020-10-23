@@ -1,6 +1,7 @@
 package com.innowise.darya.service;
 
 import com.innowise.darya.entity.Order;
+import com.innowise.darya.exception.ThereIsNoSuchOrderException;
 import com.innowise.darya.repositoty.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,10 +21,9 @@ public class OrderService {
 
     public Order getOrderStats(Long orderId) {
         Order order = orderRepository.findByOrderId(orderId);
-        /*if (publisher == null) {
-            throw new ThereIsNoSuchBookException();
+        if (order == null) {
+            throw new ThereIsNoSuchOrderException();
         }
-*/
         return order;
     }
 }

@@ -14,7 +14,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder(builderMethodName = "aPublishingHouse")
+@Builder
 public class PublishingHouse {
 
     @Id

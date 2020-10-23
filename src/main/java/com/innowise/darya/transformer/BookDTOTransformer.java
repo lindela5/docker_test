@@ -34,11 +34,6 @@ public interface BookDTOTransformer {
     })
     BookDTO bookToBookDTO(Book entity);
 
-    /*@Mappings({
-            @Mapping(target="id", source="dto.bookId"),
-            @Mapping(target="title", source="dto.bookTitle"),
-            @Mapping(target="author", source="dto.bookAuthor")
-    })*/
     @InheritInverseConfiguration
     //Аннотация определяет, что обратное отображение @InheritInverseConfiguration должно быть выполнено.
     Book bookDTOToBook(BookDTO dto);

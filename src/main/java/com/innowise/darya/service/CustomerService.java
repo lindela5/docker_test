@@ -1,6 +1,7 @@
 package com.innowise.darya.service;
 
 import com.innowise.darya.entity.Customer;
+import com.innowise.darya.exception.ThereIsNoSuchCustomerException;
 import com.innowise.darya.repositoty.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,10 +21,9 @@ public class CustomerService {
 
     public Customer getCustomerStats(Long customerId) {
         Customer customer = customerRepository.findByCustomerId(customerId);
-        /*if (publisher == null) {
-            throw new ThereIsNoSuchBookException();
+        if (customer == null) {
+            throw new ThereIsNoSuchCustomerException();
         }
-*/
         return customer;
     }
 }

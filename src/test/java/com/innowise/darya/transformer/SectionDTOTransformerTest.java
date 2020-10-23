@@ -30,18 +30,18 @@ class SectionDTOTransformerTest {
     @Test
     public void shouldReturnSectionDTO() {
 
-        Section actualEntity = SECTION_DTO_TRANSFORMER.sectionDTOToSection(SECTION_DTO);
+        Section section = SECTION_DTO_TRANSFORMER.sectionDTOToSection(SECTION_DTO);
 
-        assertEquals(SECTION_DTO.getId(), actualEntity.getId());
-        assertEquals(SECTION_DTO.getNameSection(), actualEntity.getNameSection());
+        assertEquals(SECTION_DTO.getId(), section.getId());
+        assertEquals(SECTION_DTO.getNameSection(), section.getNameSection());
     }
 
     @Test
     public void shouldReturnSection() {
 
-        SectionDTO bookDto = SECTION_DTO_TRANSFORMER.sectionToSectionDTO(SECTION);
+        SectionDTO sectionDto = SECTION_DTO_TRANSFORMER.sectionToSectionDTO(SECTION);
 
-        assertEquals(SECTION.getId(), bookDto.getId());
-        assertEquals(SECTION.getNameSection(), bookDto.getNameSection());
+        assertEquals(SECTION.getId(), sectionDto.getId());
+        assertEquals(SECTION.getNameSection(), sectionDto.getNameSection());
     }
 }

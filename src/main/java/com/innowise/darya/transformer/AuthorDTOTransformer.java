@@ -21,12 +21,6 @@ public interface AuthorDTOTransformer {
     })
     AuthorDTO authorToAuthorDTO(Author entity);
 
-  /*  @Mappings({
-            @Mapping(target = "authorId", source = "dto.authorId"),
-            @Mapping(target = "firstName", source = "dto.authorFirstName"),
-            @Mapping(target = "lastName", source = "dto.authorLastName"),
-            @Mapping(target = "country", source = "dto.authorCountry")
-    })*/
     @InheritInverseConfiguration
     Author authorDTOToAuthor(AuthorDTO dto);
 }

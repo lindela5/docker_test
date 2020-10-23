@@ -4,6 +4,7 @@ import com.innowise.darya.dto.SectionDTO;
 import com.innowise.darya.entity.Section;
 import com.innowise.darya.service.SectionService;
 import com.innowise.darya.transformer.SectionDTOTransformer;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "/section")
+@Log
 public class SectionController {
         private SectionService sectionService;
 
@@ -27,6 +29,7 @@ public class SectionController {
 
         public ResponseEntity<SectionDTO> getSectionStats(@PathVariable final Long id) {
             Section section = sectionService.getSectionStats(id);
+            log.info("Название секции - "+section.getNameSection());
             SectionDTO sectionDTO = SectionDTOTransformer.SECTION_DTO_TRANSFORMER.sectionToSectionDTO(section);
             return ResponseEntity.ok(sectionDTO);
         }

@@ -3,6 +3,7 @@ package com.innowise.darya.dto;
 import com.innowise.darya.entity.Book;
 import com.innowise.darya.entity.Customer;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class OrderDTO {
 
     private Long orderId;

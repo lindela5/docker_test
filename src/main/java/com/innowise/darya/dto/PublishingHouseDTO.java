@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder(builderMethodName = "auPublishingHouseDTO")
+@Builder
 public class PublishingHouseDTO {
 
     private Long publishingHouseId;
