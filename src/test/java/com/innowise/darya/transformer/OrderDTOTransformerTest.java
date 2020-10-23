@@ -27,7 +27,7 @@ class OrderDTOTransformerTest {
         customerDTO.setAddress("246000, Gomel, Lienin Ave 6/14");
         customerDTO.setPhone("+375336541212");
         customerDTO.setEmail("volga_semencova@mail.ru");
-        SUPPLIER.add(supplierDTO);
+        CUSTOMER.add(customerDTO);
     }
     static final LocalDate ORDER_DATE = LocalDate.parse("2020-01-14");
     static final BigDecimal AMOUNT = new BigDecimal(213);
