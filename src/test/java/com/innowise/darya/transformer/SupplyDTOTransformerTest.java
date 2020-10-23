@@ -28,8 +28,8 @@ class SupplyDTOTransformerTest {
             supplierDTO.setPhone("+375291251256");
             SUPPLIER.add(supplierDTO);
         }
-    static final LocalDate SUPPLY_DATE = "2020-01-14";
-    static final BigDecimal SUPPLIER_PRICE = 213;
+    static final LocalDate SUPPLY_DATE = LocalDate.parse("2020-01-14");
+    static final BigDecimal SUPPLIER_PRICE = new BigDecimal(213);
 
     //@formatter=off
     static final SupplyDTO SUPPLY_DTO =

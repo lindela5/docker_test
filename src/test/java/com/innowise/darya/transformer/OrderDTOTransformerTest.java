@@ -29,8 +29,8 @@ class OrderDTOTransformerTest {
         customerDTO.setEmail("volga_semencova@mail.ru");
         SUPPLIER.add(supplierDTO);
     }
-    static final LocalDate ORDER_DATE = "2020-01-14";
-    static final BigDecimal AMOUNT = 213;
+    static final LocalDate ORDER_DATE = LocalDate.parse("2020-01-14");
+    static final BigDecimal AMOUNT = new BigDecimal(213);
 
     //@formatter=off
     static final OrderDTO ORDER_DTO =
