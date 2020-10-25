@@ -14,7 +14,7 @@ public interface OrderDTOTransformer {
 
     @Mappings({
             @Mapping(target = "orderId", source = "entity.orderId"),
-     //       @Mapping(target = "bookOrder", source = "entity.bookOrder"),
+            @Mapping(target = "bookOrder", source = "entity.bookOrder"),
             @Mapping(target = "customer", source = "entity.customer"),
             @Mapping(target = "orderDate", source = "entity.orderDate"),
             @Mapping(target = "amount", source = "entity.amount")

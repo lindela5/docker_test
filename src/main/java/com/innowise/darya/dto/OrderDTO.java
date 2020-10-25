@@ -19,7 +19,7 @@ import java.util.Set;
 public class OrderDTO {
 
     private Long orderId;
- //   private Set<BookDTO> bookOrder = new HashSet<>();
+    private Set<BookDTO> bookOrder;// = new HashSet<>();
     private Customer customer;
     private LocalDate orderDate;
     private BigDecimal amount;

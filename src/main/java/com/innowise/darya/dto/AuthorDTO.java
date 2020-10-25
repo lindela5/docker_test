@@ -19,5 +19,5 @@ public class AuthorDTO {
     private String authorFirstName;
     private String authorLastName;
     private String authorCountry;
- //   private Set<BookDTO> authorBooks = new HashSet<>();
+    private Set<BookDTO> authorBooks;// = new HashSet<>();
 }

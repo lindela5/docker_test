@@ -14,7 +14,7 @@ public interface SupplyDTOTransformer {
 
     @Mappings({
             @Mapping(target = "supplyId", source = "entity.supplyId"),
-   //         @Mapping(target = "bookSupply", source = "entity.bookSupply"),
+            @Mapping(target = "bookSupply", source = "entity.bookSupply"),
             @Mapping(target = "supplier", source = "entity.supplier"),
             @Mapping(target = "supplyDate", source = "entity.supplyDate"),
             @Mapping(target = "supplierPrice", source = "entity.supplierPrice")

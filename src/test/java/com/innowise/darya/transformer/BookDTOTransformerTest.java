@@ -6,9 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static com.innowise.darya.entity.Book.aBook;
 
 class BookDTOTransformerTest {
-/*
+
     static final BookDTOTransformer TRANSFORMER = Mappers.getMapper(BookDTOTransformer.class);
     static final Long ID = 1L;
     static final String BOOK_TITLE = "Madol Duwa";
@@ -17,14 +18,14 @@ class BookDTOTransformerTest {
     static final BookDTO BOOK_DTO =
             BookDTO.builder()
                     .bookId(ID)
-                 .bookAuthor(BOOK_AUTHOR)
+               //  .bookAuthor(BOOK_AUTHOR)
                     .bookTitle(BOOK_TITLE)
                     .build();
 
     static final Book BOOK =
             aBook()
-                    .id(ID)
-                    .author(BOOK_AUTHOR)
+                    .bookId(ID)
+              //      .author(BOOK_AUTHOR)
                     .title(BOOK_TITLE)
                     .build();
     //@formatter=on
@@ -47,5 +48,5 @@ class BookDTOTransformerTest {
         assertEquals(BOOK.getBookId(), bookDto.getBookId());
         assertEquals(BOOK.getTitle(), bookDto.getBookTitle());
         assertEquals(BOOK.getTitle(), bookDto.getBookTitle());
-    }*/
+    }
 }
