@@ -94,21 +94,21 @@ class BookServiceTest {
                     .build();
     //@formatter=on
 
-    @Test
-    public void shouldThrowBookException() {
-        given(bookRepository.findByBookId(WRONG_ID)).willReturn(null);
-        assertThrows(ThereIsNoSuchException.class, () -> bookService.getBookStats(WRONG_ID));
-        then(bookRepository).should(only()).findByBookId(WRONG_ID);
+//    @Test
+//    public void shouldThrowBookException() {
+//        given(bookRepository.findByBookId(WRONG_ID)).willReturn(null);
+//        assertThrows(ThereIsNoSuchException.class, () -> bookService.getBookStats(WRONG_ID));
+//        then(bookRepository).should(only()).findByBookId(WRONG_ID);
+//
+//    }
 
-    }
-
-    @Test
-    public void shouldReturnBookStat() {
-        given(bookRepository.findByBookId(ID)).willReturn(BOOK);
-        Book actual = bookService.getBookStats(ID);
-        assertEquals(BOOK, actual);
-        then(bookRepository).should(only()).findByBookId(ID);
-
-    }
+//    @Test
+//    public void shouldReturnBookStat() {
+//        given(bookRepository.findByBookId(ID)).willReturn(BOOK);
+//        Book actual = bookService.getBookStats(ID);
+//        assertEquals(BOOK, actual);
+//        then(bookRepository).should(only()).findByBookId(ID);
+//
+//    }
 
 }

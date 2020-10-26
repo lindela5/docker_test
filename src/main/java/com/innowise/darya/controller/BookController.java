@@ -1,5 +1,6 @@
 package com.innowise.darya.controller;
 
+import com.innowise.darya.dto.AuthorDTO;
 import com.innowise.darya.entity.Book;
 import com.innowise.darya.dto.BookDTO;
 import com.innowise.darya.service.AuthorService;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/book")
 @Log
@@ -26,7 +29,7 @@ public class BookController {
         this.bookService = bookService;
     }
 
-
+/*
 
     @GetMapping(value = "{bookId}", produces = MediaType.APPLICATION_JSON_VALUE)
 
@@ -36,5 +39,10 @@ public class BookController {
         log.info("Isbn книги - "+book.getIsbn()+" название - "+ book.getTitle());
         BookDTO bookDTO = BookDTOTransformer.BOOK_DTO_TRANSFORMER.bookToBookDTO(book);
         return ResponseEntity.ok(bookDTO);
+    }*/
+
+    @GetMapping("/getauthorbyyear/{year}")
+    public List<AuthorDTO> getAuthorByYearOfIssue(@PathVariable Integer year) {
+        return bookService.getAuthorByYearOfIssue(year);
     }
 }
