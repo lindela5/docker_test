@@ -36,7 +36,7 @@ class AuthorDTOTransformerTest {
 
     @Test
     public void shouldReturnAuthorDTO() {
-
+        /*whenConvertAuthorDTOToAuthorThenCorrect*/
         Author author = AUTHOR_DTO_TRANSFORMER.authorDTOToAuthor(AUTHOR_DTO);
 
         assertEquals(AUTHOR_DTO.getAuthorId(), author.getAuthorId());
