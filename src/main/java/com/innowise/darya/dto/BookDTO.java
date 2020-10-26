@@ -20,7 +20,7 @@ public class BookDTO {
 
     private Long bookId;
     private String bookTitle;
-    private Set<AuthorDTO> bookAuthor;// = new HashSet<>();
+    private Set<AuthorDTO> bookAuthor;
     private String isbn;
     private Section section;
     private Integer yearOfIssue;

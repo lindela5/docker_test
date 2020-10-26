@@ -2,16 +2,18 @@ package com.innowise.darya.transformer;
 
 import com.innowise.darya.dto.AuthorDTO;
 import com.innowise.darya.dto.BookDTO;
-import com.innowise.darya.entity.*;
+import com.innowise.darya.entity.Author;
+import com.innowise.darya.entity.Book;
+import com.innowise.darya.entity.PublishingHouse;
+import com.innowise.darya.entity.Section;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
 import java.math.BigDecimal;
 import java.util.Set;
 
-import static java.math.BigDecimal.TEN;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static com.innowise.darya.entity.Book.aBook;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BookDTOTransformerTest {
 
@@ -19,28 +21,51 @@ class BookDTOTransformerTest {
     static final Long ID = 2L;
     static final String BOOK_TITLE = "Good Omens";
 
+    static final Long AUTHOR1_ID = 8L;
+    static final Long AUTHOR2_ID = 9L;
+
+    static final Author AUTHOR1 =
+            Author.builder()
+                    .authorId(AUTHOR1_ID)
+                    .build();
+    static final Author AUTHOR2 =
+            Author.builder()
+                    .authorId(AUTHOR2_ID)
+                    .build();
+
+    static final AuthorDTO AUTHOR1_DTO =
+            AuthorDTO.builder()
+                    .authorId(AUTHOR1_ID)
+                    .build();
+    static final AuthorDTO AUTHOR2_DTO =
+            AuthorDTO.builder()
+                    .authorId(AUTHOR2_ID)
+                    .build();
 
     static final Set<Author> AUTHOR_BOOK = Set.of(
-            Author.builder().authorId(8L).firstName("Neil").lastName("Gaiman").build(),
-            Author.builder().authorId(9L).firstName("Terry").lastName("Pratchett").build());
+            AUTHOR1,
+            AUTHOR2);
 
     static final Set<AuthorDTO> AUTHOR_BOOK_DTO = Set.of(
-            AuthorDTO.builder().authorId(8L).authorFirstName("Neil").authorLastName("Gaiman").build(),
-            AuthorDTO.builder().authorId(9L).authorFirstName("Terry").authorLastName("Pratchett").build());
+            AUTHOR1_DTO,
+            AUTHOR2_DTO);
 
+    static final String ISBN = "9781910281918";
 
-    static final String ISBN= "9781910281918";
-
+    static final Long SECTION_ID = 8L;
+    static final String NAME_SECTION = "Mystery";
     static final Section SECTION = Section.builder()
-            .id(7L)
-            .nameSection("Mystery")
+            .id(SECTION_ID)
+            .nameSection(NAME_SECTION)
             .build();
 
     static final Integer YEAR_OF_ISSUE = Integer.valueOf("2015");
 
+    static final Long PUBLISHER_ID = 8L;
+    static final String NAME_PUBLISHER = "Mystery";
     static final PublishingHouse PUBLISHING_HOUSE = PublishingHouse.builder()
-            .publishingHouseId(2L)
-            .namePublisher("BBC Books")
+            .publishingHouseId(PUBLISHER_ID)
+            .namePublisher(NAME_PUBLISHER)
             .build();
 
     static final BigDecimal PRICE = new BigDecimal(23.16);
@@ -78,32 +103,17 @@ class BookDTOTransformerTest {
     @Test
     public void shouldReturnBookEntityDTO() {
 
-        Book actualEntity = TRANSFORMER.bookDTOToBook(BOOK_DTO);
+        BookDTO actual = TRANSFORMER.bookToBookDTO(BOOK);
 
-        assertEquals(BOOK_DTO.getBookId(), actualEntity.getBookId());
-        assertEquals(BOOK_DTO.getBookTitle(), actualEntity.getTitle());
-        assertEquals(BOOK_DTO.getBookAuthor(), actualEntity.getAuthor());
-        assertEquals(BOOK_DTO.getIsbn(), actualEntity.getIsbn());
-        assertEquals(BOOK_DTO.getSection(), actualEntity.getSection());
-        assertEquals(BOOK_DTO.getYearOfIssue(), actualEntity.getYearOfIssue());
-        assertEquals(BOOK_DTO.getPublishingHouse(), actualEntity.getPublishingHouse());
-        assertEquals(BOOK_DTO.getPrice(), actualEntity.getPrice());
-        assertEquals(BOOK_DTO.getStockBalances(), actualEntity.getStockBalances());
+        assertEquals(BOOK_DTO, actual);
     }
 
     @Test
     public void shouldReturnBookEntity() {
 
-        BookDTO bookDto = TRANSFORMER.bookToBookDTO(BOOK);
+        Book book = TRANSFORMER.bookDTOToBook(BOOK_DTO);
 
-        assertEquals(BOOK.getBookId(), bookDto.getBookId());
-        assertEquals(BOOK.getTitle(), bookDto.getBookTitle());
-        assertEquals(BOOK.getAuthor(), bookDto.getBookAuthor());
-        assertEquals(BOOK.getIsbn(), bookDto.getIsbn());
-        assertEquals(BOOK.getSection(), bookDto.getSection());
-        assertEquals(BOOK.getYearOfIssue(), bookDto.getYearOfIssue());
-        assertEquals(BOOK.getPublishingHouse(), bookDto.getPublishingHouse());
-        assertEquals(BOOK.getPrice(), bookDto.getPrice());
-        assertEquals(BOOK.getStockBalances(), bookDto.getStockBalances());
+        assertEquals(BOOK, book);
+
     }
 }

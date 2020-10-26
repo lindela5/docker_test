@@ -1,10 +1,10 @@
 package com.innowise.darya.transformer;
 
 import com.innowise.darya.dto.BookDTO;
-import com.innowise.darya.dto.OrderDTO;
-import com.innowise.darya.dto.SupplierDTO;
 import com.innowise.darya.dto.SupplyDTO;
-import com.innowise.darya.entity.*;
+import com.innowise.darya.entity.Book;
+import com.innowise.darya.entity.Supplier;
+import com.innowise.darya.entity.Supply;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
@@ -13,27 +13,55 @@ import java.time.LocalDate;
 import java.util.Set;
 
 import static java.math.BigDecimal.TEN;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SupplyDTOTransformerTest {
 
     static final SupplyDTOTransformer SUPPLY_DTO_TRANSFORMER = Mappers.getMapper(SupplyDTOTransformer.class);
     static final Long ID = 1L;
+    static final Long BOOK1_ID = 2L;
+    static final Long BOOK2_ID = 3L;
+    static final Book BOOK1 =
+            Book.aBook()
+                    .bookId(BOOK1_ID)
+                    .price(TEN)
+                    .build();
+    static final Book BOOK2 =
+            Book.aBook()
+                    .bookId(BOOK2_ID)
+                    .price(TEN)
+                    .build();
+
+    static final BookDTO BOOK1_DTO =
+            BookDTO.builder()
+                    .bookId(BOOK1_ID)
+                    .price(TEN)
+                    .build();
+
+    static final BookDTO BOOK2_DTO =
+            BookDTO.builder()
+                    .bookId(BOOK2_ID)
+                    .price(TEN)
+                    .build();
 
     static final Set<Book> BOOK_SUPPLY = Set.of(
-            Book.aBook().bookId(2L).price(TEN).build(),
-            Book.aBook().bookId(3L).price(TEN).build());
+            BOOK1,
+            BOOK2);
     static final Set<BookDTO> BOOK_SUPPLY_DTO = Set.of(
-            BookDTO.builder().bookId(2L).price(TEN).build(),
-            BookDTO.builder().bookId(3L).price(TEN).build());
+            BOOK1_DTO,
+            BOOK2_DTO);
 
+    static final String SUPPLIER_NAME = "Perfect books";
+    static final String ADDRESS = "14 Pinskaya Street, Gomel, Belarus";
+    static final String PHONE = "+375291251256";
 
     static final Supplier SUPPLIER = Supplier.builder()
-            .id(1L)
-            .supplierName("Perfect books")
-            .address("14 Pinskaya Street, Gomel, Belarus")
-            .phone("+375291251256")
+            .id(ID)
+            .supplierName(SUPPLIER_NAME)
+            .address(ADDRESS)
+            .phone(PHONE)
             .build();
+
     static final LocalDate SUPPLY_DATE = LocalDate.parse("2020-01-14");
     static final BigDecimal SUPPLIER_PRICE = new BigDecimal(213);
 
@@ -61,24 +89,17 @@ class SupplyDTOTransformerTest {
     @Test
     public void shouldReturnSupplyDTO() {
 
-        Supply supply = SUPPLY_DTO_TRANSFORMER.supplyDTOToSupply(SUPPLY_DTO);
+        SupplyDTO supplyDto = SUPPLY_DTO_TRANSFORMER.supplyToSupplyDTO(SUPPLY);
 
-        assertEquals(SUPPLY_DTO.getSupplyId(), supply.getSupplyId());
-        assertEquals(SUPPLY_DTO.getBookSupply(), supply.getBookSupply());
-        assertEquals(SUPPLY_DTO.getSupplier(), supply.getSupplier());
-        assertEquals(SUPPLY_DTO.getSupplyDate(), supply.getSupplyDate());
-        assertEquals(SUPPLY_DTO.getSupplierPrice(), supply.getSupplierPrice());
+        assertEquals(SUPPLY_DTO, supplyDto);
     }
 
     @Test
     public void shouldReturnSupply() {
 
-        SupplyDTO supplyDto = SUPPLY_DTO_TRANSFORMER.supplyToSupplyDTO(SUPPLY);
+        Supply supply = SUPPLY_DTO_TRANSFORMER.supplyDTOToSupply(SUPPLY_DTO);
 
-        assertEquals(SUPPLY.getSupplyId(), supplyDto.getSupplyId());
-        assertEquals(SUPPLY.getBookSupply(), supplyDto.getBookSupply());
-        assertEquals(SUPPLY.getSupplier(), supplyDto.getSupplier());
-        assertEquals(SUPPLY.getSupplyDate(), supplyDto.getSupplyDate());
-        assertEquals(SUPPLY.getSupplierPrice(), supplyDto.getSupplierPrice());
+        assertEquals(SUPPLY, supply);
+
     }
 }

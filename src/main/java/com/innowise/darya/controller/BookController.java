@@ -2,6 +2,7 @@ package com.innowise.darya.controller;
 
 import com.innowise.darya.entity.Book;
 import com.innowise.darya.dto.BookDTO;
+import com.innowise.darya.service.AuthorService;
 import com.innowise.darya.transformer.BookDTOTransformer;
 import com.innowise.darya.service.BookService;
 import lombok.extern.java.Log;
@@ -25,12 +26,14 @@ public class BookController {
         this.bookService = bookService;
     }
 
+
+
     @GetMapping(value = "{bookId}", produces = MediaType.APPLICATION_JSON_VALUE)
 
 
     public ResponseEntity<BookDTO> getBookStats(@PathVariable final Long bookId) {
         Book book = bookService.getBookStats(bookId);
-       // log.info("Isbn книги - "+book.getIsbn()+" название - "+ book.getTitle());
+        log.info("Isbn книги - "+book.getIsbn()+" название - "+ book.getTitle());
         BookDTO bookDTO = BookDTOTransformer.BOOK_DTO_TRANSFORMER.bookToBookDTO(book);
         return ResponseEntity.ok(bookDTO);
     }

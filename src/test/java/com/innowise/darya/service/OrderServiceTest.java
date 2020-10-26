@@ -34,17 +34,39 @@ class OrderServiceTest {
 
     private static final Long WRONG_ID = 18L;
     static final Long ID = 1L;
+    static final Long BOOK1_ID = 2L;
+    static final Long BOOK2_ID = 3L;
+    static final Book BOOK1 =
+            Book.aBook()
+                    .bookId(BOOK1_ID)
+                    .price(TEN)
+                    .build();
+    static final Book BOOK2 =
+            Book.aBook()
+                    .bookId(BOOK2_ID)
+                    .price(TEN)
+                    .build();
+
+
     static final Set<Book> BOOK_ORDER = Set.of(
-            Book.aBook().bookId(2L).price(TEN).build(),
-            Book.aBook().bookId(3L).price(TEN).build());
+            BOOK1,
+            BOOK2);
+
+
+    static final Long CUSTOMER_ID = 2L;
+    static final String FIRST_NAME = "Volga";
+    static final String LAST_NAME = "Semencova";
+    static final String ADDRESS = "246000, Gomel, Lienin Ave 6/14";
+    static final String PHONE = "+375336541212";
+    static final String EMAIL = "volga_semencova@mail.ru";
 
     static final Customer CUSTOMER = Customer.builder()
-            .customerId(2L)
-            .firstName("Volga")
-            .lastName("Semencova")
-            .address("246000, Gomel, Lienin Ave 6/14")
-            .phone("+375336541212")
-            .email("volga_semencova@mail.ru")
+            .customerId(CUSTOMER_ID)
+            .firstName(FIRST_NAME)
+            .lastName(LAST_NAME)
+            .address(ADDRESS)
+            .phone(PHONE)
+            .email(EMAIL)
             .build();
 
     static final LocalDate ORDER_DATE = LocalDate.parse("2020-01-14");

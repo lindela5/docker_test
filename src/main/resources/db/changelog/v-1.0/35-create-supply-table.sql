@@ -7,6 +7,10 @@
 );
 GO
 
+ALTER TABLE supply
+    ADD CONSTRAINT FK_supply_supplier_id
+        FOREIGN KEY (supplier_id) REFERENCES supplier(id);
+GO
 
 
 

@@ -12,7 +12,7 @@
                  relativeToChangelogFile="true"
                  splitStatements="true"
                  stripComments="true"
-                 path="25-create-sections-table.sql"/>
+                 path="05-create-sections-table.sql"/>
         <rollback>
             <sqlFile dbms="postgresql"
                      encoding="utf8"
@@ -20,7 +20,7 @@
                      relativeToChangelogFile="true"
                      splitStatements="true"
                      stripComments="true"
-                     path="25-drop-sections-table.sql"/>
+                     path="05-drop-sections-table.sql"/>
         </rollback>
     </changeSet>
 </databaseChangeLog>

@@ -39,26 +39,39 @@ class BookServiceTest {
     static final Long ID = 2L;
     static final String BOOK_TITLE = "Good Omens";
 
+    static final Long AUTHOR1_ID = 8L;
+    static final Long AUTHOR2_ID = 9L;
+
+    static final Author AUTHOR1 =
+            Author.builder()
+                    .authorId(AUTHOR1_ID)
+                    .build();
+    static final Author AUTHOR2 =
+            Author.builder()
+                    .authorId(AUTHOR2_ID)
+                    .build();
+
     static final Set<Author> AUTHOR_BOOK = Set.of(
-            Author.builder().authorId(8L).firstName("Neil").lastName("Gaiman").build(),
-            Author.builder().authorId(9L).firstName("Terry").lastName("Pratchett").build());
+            AUTHOR1,
+            AUTHOR2);
 
-    static final Set<AuthorDTO> AUTHOR_BOOK_DTO = Set.of(
-            AuthorDTO.builder().authorId(8L).authorFirstName("Neil").authorLastName("Gaiman").build(),
-            AuthorDTO.builder().authorId(9L).authorFirstName("Terry").authorLastName("Pratchett").build());
 
-    static final String ISBN= "9781910281918";
+    static final String ISBN = "9781910281918";
 
+    static final Long SECTION_ID = 8L;
+    static final String NAME_SECTION = "Mystery";
     static final Section SECTION = Section.builder()
-            .id(7L)
-            .nameSection("Mystery")
+            .id(SECTION_ID)
+            .nameSection(NAME_SECTION)
             .build();
 
     static final Integer YEAR_OF_ISSUE = Integer.valueOf("2015");
 
+    static final Long PUBLISHER_ID = 8L;
+    static final String NAME_PUBLISHER = "Mystery";
     static final PublishingHouse PUBLISHING_HOUSE = PublishingHouse.builder()
-            .publishingHouseId(2L)
-            .namePublisher("BBC Books")
+            .publishingHouseId(PUBLISHER_ID)
+            .namePublisher(NAME_PUBLISHER)
             .build();
 
     static final BigDecimal PRICE = new BigDecimal(23.16);
