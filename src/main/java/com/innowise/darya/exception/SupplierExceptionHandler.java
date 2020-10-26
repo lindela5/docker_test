@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class SupplierExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(ThereIsNoSuchSupplierException.class)
+    @ExceptionHandler(ThereIsNoSuchException.class)
     protected ResponseEntity<SupplierException> handleThereIsNoSuchSupplierException() {
         return new ResponseEntity<>(new SupplierException("There is no such supplier"), HttpStatus.NOT_FOUND);
     }

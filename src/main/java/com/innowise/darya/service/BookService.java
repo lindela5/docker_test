@@ -1,7 +1,7 @@
 package com.innowise.darya.service;
 
 import com.innowise.darya.entity.Book;
-import com.innowise.darya.exception.ThereIsNoSuchBookException;
+import com.innowise.darya.exception.ThereIsNoSuchException;
 import com.innowise.darya.repositoty.BookRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class BookService {
         Book book = bookRepository.findByBookId(bookId);
         if (book == null) {
             log.error("There is no such book");
-            throw new ThereIsNoSuchBookException();
+            throw new ThereIsNoSuchException();
         }
 
         return book;

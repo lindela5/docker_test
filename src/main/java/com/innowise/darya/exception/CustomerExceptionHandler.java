@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class CustomerExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(ThereIsNoSuchCustomerException.class)
+    @ExceptionHandler(ThereIsNoSuchException.class)
     protected ResponseEntity<CustomerException> handleThereIsNoSuchCustomerException() {
         return new ResponseEntity<>(new CustomerException("There is no such customer"), HttpStatus.NOT_FOUND);
     }

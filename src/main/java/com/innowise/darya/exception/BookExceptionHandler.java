@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class BookExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(ThereIsNoSuchBookException.class)
+    @ExceptionHandler(ThereIsNoSuchException.class)
     protected ResponseEntity<BookException> handleThereIsNoSuchBookException() {
         return new ResponseEntity<>(new BookException("There is no such book"), HttpStatus.NOT_FOUND);
     }

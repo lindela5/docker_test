@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class OrderExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(ThereIsNoSuchOrderException.class)
+    @ExceptionHandler(ThereIsNoSuchException.class)
     protected ResponseEntity<OrderException> handleThereIsNoSuchOrderException() {
         return new ResponseEntity<>(new OrderException("There is no such order"), HttpStatus.NOT_FOUND);
     }

@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class SectionExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(ThereIsNoSuchSectionException.class)
+    @ExceptionHandler(ThereIsNoSuchException.class)
     protected ResponseEntity<SectionException> handleThereIsNoSuchSectionException() {
         return new ResponseEntity<>(new SectionException("There is no such section"), HttpStatus.NOT_FOUND);
     }

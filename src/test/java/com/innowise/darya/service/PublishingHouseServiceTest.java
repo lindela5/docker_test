@@ -1,7 +1,7 @@
 package com.innowise.darya.service;
 
 import com.innowise.darya.entity.PublishingHouse;
-import com.innowise.darya.exception.ThereIsNoSuchPublishingHouseException;
+import com.innowise.darya.exception.ThereIsNoSuchException;
 import com.innowise.darya.repositoty.PublishingHouseRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -43,7 +43,7 @@ class PublishingHouseServiceTest {
     @Test
     public void shouldThrowPublishingHouseException() {
         given(publishingHouseRepository.findByPublishingHouseId(WRONG_ID)).willReturn(null);
-        assertThrows(ThereIsNoSuchPublishingHouseException.class, () -> publishingHouseService.getPublisherStats(WRONG_ID));
+        assertThrows(ThereIsNoSuchException.class, () -> publishingHouseService.getPublisherStats(WRONG_ID));
         then(publishingHouseRepository).should(only()).findByPublishingHouseId(WRONG_ID);
 
     }

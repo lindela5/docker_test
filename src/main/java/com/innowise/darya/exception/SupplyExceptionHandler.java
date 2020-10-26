@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class SupplyExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(ThereIsNoSuchSupplyException.class)
+    @ExceptionHandler(ThereIsNoSuchException.class)
     protected ResponseEntity<SupplyException> handleThereIsNoSuchSupplyException() {
         return new ResponseEntity<>(new SupplyException("There is no such supply"), HttpStatus.NOT_FOUND);
     }

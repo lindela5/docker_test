@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class AuthorExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(ThereIsNoSuchAuthorException.class)
+    @ExceptionHandler(ThereIsNoSuchException.class)
     protected ResponseEntity<AuthorException> handleThereIsNoSuchAuthorException() {
         return new ResponseEntity<>(new AuthorException("There is no such author"), HttpStatus.NOT_FOUND);
     }

@@ -1,7 +1,7 @@
 package com.innowise.darya.service;
 
 import com.innowise.darya.entity.Customer;
-import com.innowise.darya.exception.ThereIsNoSuchCustomerException;
+import com.innowise.darya.exception.ThereIsNoSuchException;
 import com.innowise.darya.repositoty.CustomerRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -49,7 +49,7 @@ class CustomerServiceTest {
     @Test
     public void shouldThrowCustomerException() {
         given(customerRepository.findByCustomerId(WRONG_ID)).willReturn(null);
-        assertThrows(ThereIsNoSuchCustomerException.class, () -> customerService.getCustomerStats(WRONG_ID));
+        assertThrows(ThereIsNoSuchException.class, () -> customerService.getCustomerStats(WRONG_ID));
         then(customerRepository).should(only()).findByCustomerId(WRONG_ID);
 
     }

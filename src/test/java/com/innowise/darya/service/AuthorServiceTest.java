@@ -1,7 +1,7 @@
 package com.innowise.darya.service;
 
 import com.innowise.darya.entity.Author;
-import com.innowise.darya.exception.ThereIsNoSuchAuthorException;
+import com.innowise.darya.exception.ThereIsNoSuchException;
 import com.innowise.darya.repositoty.AuthorRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -45,7 +45,7 @@ class AuthorServiceTest {
     @Test
     public void shouldThrowAuthorException() {
         given(authorRepository.findByAuthorId(WRONG_ID)).willReturn(null);
-        assertThrows(ThereIsNoSuchAuthorException.class, () -> authorService.getAuthorStats(WRONG_ID));
+        assertThrows(ThereIsNoSuchException.class, () -> authorService.getAuthorStats(WRONG_ID));
         then(authorRepository).should(only()).findByAuthorId(WRONG_ID);
 
     }

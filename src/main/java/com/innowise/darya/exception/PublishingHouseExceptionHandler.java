@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class PublishingHouseExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(ThereIsNoSuchPublishingHouseException.class)
+    @ExceptionHandler(ThereIsNoSuchException.class)
     protected ResponseEntity<PublishingHouseException> handleThereIsNoSuchPublishingHouseException() {
         return new ResponseEntity<>(new PublishingHouseException("There is no such publishing house"), HttpStatus.NOT_FOUND);
     }

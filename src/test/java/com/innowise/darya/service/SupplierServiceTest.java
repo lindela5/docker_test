@@ -1,7 +1,7 @@
 package com.innowise.darya.service;
 
 import com.innowise.darya.entity.Supplier;
-import com.innowise.darya.exception.ThereIsNoSuchSupplierException;
+import com.innowise.darya.exception.ThereIsNoSuchException;
 import com.innowise.darya.repositoty.SupplierRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -45,7 +45,7 @@ class SupplierServiceTest {
     @Test
     public void shouldThrowSupplierException() {
         given(supplierRepository.findById(WRONG_ID)).willReturn(null);
-        assertThrows(ThereIsNoSuchSupplierException.class, () -> supplierService.getSupplierStats(WRONG_ID));
+        assertThrows(ThereIsNoSuchException.class, () -> supplierService.getSupplierStats(WRONG_ID));
         then(supplierRepository).should(only()).findById(WRONG_ID);
 
     }

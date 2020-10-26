@@ -1,7 +1,7 @@
 package com.innowise.darya.service;
 
 import com.innowise.darya.entity.Author;
-import com.innowise.darya.exception.ThereIsNoSuchAuthorException;
+import com.innowise.darya.exception.ThereIsNoSuchException;
 import com.innowise.darya.repositoty.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ public class AuthorService {
     public Author getAuthorStats(Long authorId) {
         Author author = authorRepository.findByAuthorId(authorId);
         if (author == null) {
-            throw new ThereIsNoSuchAuthorException();
+            throw new ThereIsNoSuchException();
         }
 
         return author;

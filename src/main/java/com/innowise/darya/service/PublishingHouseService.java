@@ -1,7 +1,7 @@
 package com.innowise.darya.service;
 
 import com.innowise.darya.entity.PublishingHouse;
-import com.innowise.darya.exception.ThereIsNoSuchPublishingHouseException;
+import com.innowise.darya.exception.ThereIsNoSuchException;
 import com.innowise.darya.repositoty.PublishingHouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ public class PublishingHouseService {
     public PublishingHouse getPublisherStats(Long publishingHouseId) {
         PublishingHouse publisher = publishingHouseRepository.findByPublishingHouseId(publishingHouseId);
         if (publisher == null) {
-            throw new ThereIsNoSuchPublishingHouseException();
+            throw new ThereIsNoSuchException();
         }
         return publisher;
     }

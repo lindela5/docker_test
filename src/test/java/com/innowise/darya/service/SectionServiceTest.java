@@ -1,7 +1,7 @@
 package com.innowise.darya.service;
 
 import com.innowise.darya.entity.Section;
-import com.innowise.darya.exception.ThereIsNoSuchSectionException;
+import com.innowise.darya.exception.ThereIsNoSuchException;
 import com.innowise.darya.repositoty.SectionRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -41,7 +41,7 @@ class SectionServiceTest {
     @Test
     public void shouldThrowSectionException() {
         given(sectionRepository.findById(WRONG_ID)).willReturn(null);
-        assertThrows(ThereIsNoSuchSectionException.class, () -> sectionService.getSectionStats(WRONG_ID));
+        assertThrows(ThereIsNoSuchException.class, () -> sectionService.getSectionStats(WRONG_ID));
         then(sectionRepository).should(only()).findById(WRONG_ID);
 
     }
