@@ -4,6 +4,7 @@ import com.innowise.darya.dto.AuthorDTO;
 import com.innowise.darya.entity.Book;
 import com.innowise.darya.dto.BookDTO;
 import com.innowise.darya.service.AuthorService;
+import com.innowise.darya.service.impl.BookServiceImpl;
 import com.innowise.darya.transformer.BookDTOTransformer;
 import com.innowise.darya.service.BookService;
 import lombok.extern.java.Log;
@@ -41,8 +42,13 @@ public class BookController {
         return ResponseEntity.ok(bookDTO);
     }*/
 
-    @GetMapping("/getauthorbyyear/{year}")
-    public List<AuthorDTO> getAuthorByYearOfIssue(@PathVariable Integer year) {
-        return bookService.getAuthorByYearOfIssue(year);
+//    @GetMapping("/getauthorbyyear/{year}")
+//    public List<AuthorDTO> getAuthorByYearOfIssue(@PathVariable Integer year) {
+//        return bookService.getAuthorByYearOfIssue(year);
+//    }
+
+    @GetMapping("/getbyid/{id}")
+    public BookDTO getBookById(@PathVariable long id){
+        return bookService.getBookById(id);
     }
 }

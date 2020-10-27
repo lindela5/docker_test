@@ -20,38 +20,42 @@ import java.util.Set;
 @Service("bookservice")
 public class BookServiceImpl implements BookService  {
 
+    private BookRepository bookRepository;
+
     @Autowired
-    private BookRepository repository;
+    public BookServiceImpl(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
     @Override
     public List<BookDTO> getAllBook() {
         List<BookDTO> bookDTOList = new ArrayList<>();
-        List<Book> bookList = repository.findAll();
+        List<Book> bookList = bookRepository.findAll();
         for (Book book : bookList){
             bookDTOList.add(BookDTOTransformer.BOOK_DTO_TRANSFORMER.bookToBookDTO(book));
         }
         return bookDTOList;
     }
 
+   // @Override
+  //  public BookDTO getBookById(long id) {
+  //      return null;
+ //   }
+
     @Override
     public BookDTO getBookById(long id) {
-        return null;
+        Optional <Book> bookOptional = Optional.ofNullable(bookRepository.findByBookId(id));
+        if (!bookOptional.isPresent()){
+            return null;
+        }
+        Book book = bookOptional.get();
+        BookDTO bookDTO = BookDTOTransformer.BOOK_DTO_TRANSFORMER.bookToBookDTO(book);
+        return bookDTO;
     }
-
-//    @Override
-//    public BookDTO getBookById(long Id) {
-//        Optional<Book> bookOptional = repository.findByBookId(long Id);
-//        if (!bookOptional.isPresent()){
-//            return null;
-//        }
-//        Book book = bookOptional.get();
-//        BookDTO bookDTO = BookDTOTransformer.BOOK_DTO_TRANSFORMER.bookToBookDTO(book);
-//        return bookDTO;
-//    }
 
     @Override
     public Book addBook(Book book) {
-        return repository.save(book);
+        return bookRepository.save(book);
     }
 
     @Override
@@ -77,7 +81,7 @@ public class BookServiceImpl implements BookService  {
 
     @Override
     public List<AuthorDTO> getAuthorByYearOfIssue(Integer yearOfIssue) {
-        List<Book> bookList = repository.findBookByYearOfIssue(yearOfIssue);
+        List<Book> bookList = bookRepository.findBookByYearOfIssue(yearOfIssue);
         List<Set<Author>> authorList = new ArrayList<>();
         for (Book book : bookList){
             authorList.add(book.getAuthor());
