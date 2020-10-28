@@ -11,13 +11,14 @@ import java.util.Set;
 
 @Entity
 @Table(name = "orders")
-@Getter
-@Setter
-@EqualsAndHashCode(exclude = {"bookOrder"})
+//@Getter
+//@Setter
+//@EqualsAndHashCode(exclude = {"bookOrder"})
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString(exclude = {"bookOrder"})
+@ToString//(exclude = {"bookOrder"})
 public class Order {
     @Id
     private Long orderId;

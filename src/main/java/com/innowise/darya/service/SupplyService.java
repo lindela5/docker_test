@@ -3,6 +3,7 @@ package com.innowise.darya.service;
 import com.innowise.darya.dto.SupplyDTO;
 import com.innowise.darya.entity.Supply;
 import com.innowise.darya.exception.ThereIsNoSuchException;
+import com.innowise.darya.repositoty.BookRepository;
 import com.innowise.darya.repositoty.SupplyRepository;
 import com.innowise.darya.transformer.SupplyDTOTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,15 +18,17 @@ public class SupplyService {
     private SupplyRepository supplyRepository;
 
     @Autowired
+    private BookRepository bookRepository;
+
+    @Autowired
     public SupplyService(SupplyRepository supplyRepository) {
         this.supplyRepository = supplyRepository;
     }
 
-
     public Supply getSupplyStats(Long supplyId) {
         Supply supply = supplyRepository.findBySupplyId(supplyId);
         if (supply == null) {
-            throw new ThereIsNoSuchException();
+            throw new ThereIsNoSuchException("supply");
         }
         return supply;
     }

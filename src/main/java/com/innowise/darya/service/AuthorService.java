@@ -22,7 +22,7 @@ public class AuthorService {
     public Author getAuthorStats(Long authorId) {
         Author author = authorRepository.findByAuthorId(authorId);
         if (author == null) {
-            throw new ThereIsNoSuchException();
+            throw new ThereIsNoSuchException("author");
         }
 
         return author;

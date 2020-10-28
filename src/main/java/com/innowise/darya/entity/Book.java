@@ -10,13 +10,14 @@ import java.util.Set;
 
 @Entity
 @Table(name = "books")
-@Getter
-@Setter
-@EqualsAndHashCode(exclude = {"author","orderBooks","supplyBook"})
+//@Getter
+//@Setter
+//@EqualsAndHashCode(exclude = {"author","orderBooks","supplyBook"})
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder (builderMethodName = "aBook")
-@ToString(exclude = {"author","orderBooks","supplyBook"})
+@ToString//(exclude = {"author","orderBooks","supplyBook"})
 public class Book {
 
     @Id
@@ -47,10 +48,10 @@ public class Book {
     private BigDecimal price;
     private Integer stockBalances;
 
-    @ManyToMany(mappedBy = "bookOrder")
-    private Set<Order> orderBooks = new HashSet<>();
-
-    @ManyToMany(mappedBy = "bookSupply")
-    private Set<Supply> supplyBook = new HashSet<>();
+//    @ManyToMany(mappedBy = "bookOrder")
+//    private Set<Order> orderBooks = new HashSet<>();
+//
+//    @ManyToMany(mappedBy = "bookSupply")
+//    private Set<Supply> supplyBook = new HashSet<>();
 
 }

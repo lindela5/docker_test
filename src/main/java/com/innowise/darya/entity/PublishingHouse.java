@@ -8,9 +8,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "publishing_house")
-@Getter
-@Setter
-@EqualsAndHashCode(exclude = {"bookEntities"})
+//@Getter
+//@Setter
+//@EqualsAndHashCode(exclude = {"bookEntities"})
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -21,7 +22,7 @@ public class PublishingHouse {
     private String namePublisher;
     private String address;
 
-    @OneToMany(mappedBy = "publishingHouse")
-    private Set<Book> bookEntities = new HashSet<>();
+    //@OneToMany(mappedBy = "publishingHouse")
+    //private Set<Book> bookEntities = new HashSet<>();
 
 }

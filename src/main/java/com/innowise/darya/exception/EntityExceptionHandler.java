@@ -9,16 +9,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-public class SupplierExceptionHandler extends ResponseEntityExceptionHandler {
+public class EntityExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(ThereIsNoSuchException.class)
-    protected ResponseEntity<SupplierException> handleThereIsNoSuchSupplierException() {
-        return new ResponseEntity<>(new SupplierException("There is no such supplier"), HttpStatus.NOT_FOUND);
-    }
+    protected ResponseEntity<?> handleThereIsNoSuchBookException(ThereIsNoSuchException exception) {
 
-    @Data
-    @AllArgsConstructor
-    private static class SupplierException {
-        private String message;
+        return new ResponseEntity<>("There is no such " + exception.getFieldName(), HttpStatus.NOT_FOUND);
     }
 }

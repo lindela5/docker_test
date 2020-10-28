@@ -11,9 +11,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "supply")
-@Getter
-@Setter
-@EqualsAndHashCode(exclude = {"bookSupply"})
+//@Getter
+//@Setter
+//@EqualsAndHashCode(exclude = {"bookSupply"})
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

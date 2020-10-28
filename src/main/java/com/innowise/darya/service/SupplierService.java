@@ -22,7 +22,7 @@ public class SupplierService {
     public Supplier getSupplierStats(Long id) {
         Supplier supplier = supplierRepository.findById(id);
         if (supplier == null) {
-            throw new ThereIsNoSuchException();
+            throw new ThereIsNoSuchException("supplier");
         }
         return supplier;
     }

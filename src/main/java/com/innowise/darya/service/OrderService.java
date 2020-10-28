@@ -29,7 +29,7 @@ public class OrderService {
 
       Order order = orderRepository.findByOrderId(orderId);
         if (order == null) {
-            throw new ThereIsNoSuchException();
+            throw new ThereIsNoSuchException("order");
         }
         return order;
     }

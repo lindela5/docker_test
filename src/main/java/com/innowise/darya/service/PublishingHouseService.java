@@ -22,7 +22,7 @@ public class PublishingHouseService {
     public PublishingHouse getPublisherStats(Long publishingHouseId) {
         PublishingHouse publisher = publishingHouseRepository.findByPublishingHouseId(publishingHouseId);
         if (publisher == null) {
-            throw new ThereIsNoSuchException();
+            throw new ThereIsNoSuchException("publisher");
         }
         return publisher;
     }

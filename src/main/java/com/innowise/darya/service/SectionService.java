@@ -22,7 +22,7 @@ public class SectionService {
     public Section getSectionStats(Long sectionId) {
         Section section = sectionRepository.findById(sectionId);
         if (section == null) {
-            throw new ThereIsNoSuchException();
+            throw new ThereIsNoSuchException("section");
         }
 
         return section;

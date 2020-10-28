@@ -14,7 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString(exclude = {"authorBooks"})
+@ToString//(exclude = {"authorBooks"})
 public class Author {
 
     @Id
@@ -24,8 +24,8 @@ public class Author {
     private String lastName;
     private String country;
 
-    @ManyToMany(mappedBy = "author")
-    private Set<Book> authorBooks = new HashSet<>();
+//    @ManyToMany(mappedBy = "author")
+//    private Set<Book> authorBooks = new HashSet<>();
 
 
 }

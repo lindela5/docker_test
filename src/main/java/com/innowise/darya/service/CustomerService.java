@@ -22,7 +22,7 @@ public class CustomerService {
     public Customer getCustomerStats(Long customerId) {
         Customer customer = customerRepository.findByCustomerId(customerId);
         if (customer == null) {
-            throw new ThereIsNoSuchException();
+            throw new ThereIsNoSuchException("customer");
         }
         return customer;
     }

@@ -36,7 +36,7 @@ public class BookService {
         Book book = bookRepository.findByBookId(bookId);
         if (book == null) {
             log.error("There is no such book");
-            throw new ThereIsNoSuchException();
+            throw new ThereIsNoSuchException("book");
         }
 
         return book;
@@ -49,6 +49,11 @@ public class BookService {
             return null;
         }
         Book book = bookOptional.get();
+        if (book == null) {
+            log.error("There is no such book");
+            throw new ThereIsNoSuchException("book");
+        }
+
         BookDTO bookDTO = BookDTOTransformer.BOOK_DTO_TRANSFORMER.bookToBookDTO(book);
         return bookDTO;
     }
