@@ -1,9 +1,6 @@
 package com.innowise.darya.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -11,7 +8,9 @@ import java.util.Set;
 
 @Entity
 @Table(name = "author")
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode(exclude = {"authorBooks"})
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

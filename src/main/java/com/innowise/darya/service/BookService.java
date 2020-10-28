@@ -15,11 +15,11 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Set;
 
-//@Service
-//@Transactional
-//@Slf4j
-public interface BookService {
-    /*private BookRepository bookRepository;
+@Service
+@Transactional
+@Slf4j
+public class BookService {
+    private BookRepository bookRepository;
 
     @Autowired
     public BookService(BookRepository bookRepository) {
@@ -35,18 +35,18 @@ public interface BookService {
         }
 
         return book;
-    }*/
-    List<BookDTO> getAllBook();
+    }
+ //   List<BookDTO> getAllBook();
 
-    BookDTO getBookById(long id);
+   // BookDTO getBookById(long id);
 
-    Book addBook(Book book);
+  //  Book addBook(Book book);
 
     //void delBook(long id);
 
-    ResponseEntity<Object> updBook(Book book, long id);
+  //  ResponseEntity<Object> updBook(Book book, long id);
 
-    List<AuthorDTO> getAuthorByYearOfIssue(Integer yearOfIssue);
+ //   List<AuthorDTO> getAuthorByYearOfIssue(Integer yearOfIssue);
 
   //  List<String> getBookByYearOfIssue(Integer yearOfIssue);
 
