@@ -2,10 +2,14 @@ package com.innowise.darya.service;
 
 import com.innowise.darya.dto.AuthorDTO;
 import com.innowise.darya.dto.BookDTO;
+import com.innowise.darya.dto.SupplyDTO;
 import com.innowise.darya.entity.Author;
 import com.innowise.darya.entity.Book;
+import com.innowise.darya.entity.Supply;
 import com.innowise.darya.exception.ThereIsNoSuchException;
 import com.innowise.darya.repositoty.BookRepository;
+import com.innowise.darya.transformer.BookDTOTransformer;
+import com.innowise.darya.transformer.SupplyDTOTransformer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -36,20 +41,17 @@ public class BookService {
 
         return book;
     }
- //   List<BookDTO> getAllBook();
 
-   // BookDTO getBookById(long id);
 
-  //  Book addBook(Book book);
-
-    //void delBook(long id);
-
-  //  ResponseEntity<Object> updBook(Book book, long id);
-
- //   List<AuthorDTO> getAuthorByYearOfIssue(Integer yearOfIssue);
-
-  //  List<String> getBookByYearOfIssue(Integer yearOfIssue);
-
+    public BookDTO getBookById(long id) {
+        Optional<Book> bookOptional = Optional.ofNullable(bookRepository.findByBookId(id));
+        if (!bookOptional.isPresent()){
+            return null;
+        }
+        Book book = bookOptional.get();
+        BookDTO bookDTO = BookDTOTransformer.BOOK_DTO_TRANSFORMER.bookToBookDTO(book);
+        return bookDTO;
+    }
 
 }
 //}

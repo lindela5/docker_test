@@ -46,8 +46,8 @@ public class BookController {
 //        return bookService.getAuthorByYearOfIssue(year);
 //    }
 //
-//    @GetMapping("/getbyid/{id}")
-//    public BookDTO getBookById(@PathVariable long id){
-//        return bookService.getBookById(id);
-//    }
+   @GetMapping("/getbyid/{id}")
+   public BookDTO getBookById(@PathVariable long id){
+      return bookService.getBookById(id);
+    }
 }

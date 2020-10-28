@@ -1,12 +1,10 @@
 package com.innowise.darya.dto;
 
 import com.innowise.darya.entity.Book;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -19,5 +17,5 @@ public class AuthorDTO {
     private String authorFirstName;
     private String authorLastName;
     private String authorCountry;
-    private Set<BookDTO> authorBooks;// = new HashSet<>();
+//    private List<BookDTO> authorBooks;// = new ArrayList<>();
 }

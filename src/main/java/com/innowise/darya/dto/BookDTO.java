@@ -3,10 +3,7 @@ package com.innowise.darya.dto;
 import com.innowise.darya.entity.Author;
 import com.innowise.darya.entity.PublishingHouse;
 import com.innowise.darya.entity.Section;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.HashSet;

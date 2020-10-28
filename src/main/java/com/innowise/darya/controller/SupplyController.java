@@ -35,5 +35,10 @@ public class SupplyController {
         return ResponseEntity.ok(supplyDTO);
     }
 
+    @GetMapping("/getbyid/{id}")
+    public SupplyDTO getSupplyById(@PathVariable long id){
+        return supplyService.getSupplyById(id);
+    }
+
 }
 

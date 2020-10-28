@@ -2,17 +2,16 @@ package com.innowise.darya.dto;
 
 import com.innowise.darya.entity.Book;
 import com.innowise.darya.entity.Customer;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode(exclude = {"bookOrder"})
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

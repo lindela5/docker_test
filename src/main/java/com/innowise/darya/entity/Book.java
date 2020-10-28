@@ -12,10 +12,11 @@ import java.util.Set;
 @Table(name = "books")
 @Getter
 @Setter
-@EqualsAndHashCode(exclude = {"author"})
+@EqualsAndHashCode(exclude = {"author","orderBooks","supplyBook"})
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder (builderMethodName = "aBook")
+@ToString(exclude = {"author","orderBooks","supplyBook"})
 public class Book {
 
     @Id
