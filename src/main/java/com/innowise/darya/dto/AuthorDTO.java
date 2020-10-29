@@ -17,5 +17,4 @@ public class AuthorDTO {
     private String authorFirstName;
     private String authorLastName;
     private String authorCountry;
-//    private List<BookDTO> authorBooks;// = new ArrayList<>();
 }

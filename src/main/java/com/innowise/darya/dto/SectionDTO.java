@@ -10,7 +10,7 @@ import javax.persistence.Id;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder  //(builderMethodName = "aSectionDTO")
+@Builder
 public class SectionDTO {
 
     private Long id;

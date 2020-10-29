@@ -15,12 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/customer")
 public class CustomerController {
+    @Autowired
     private CustomerService customerService;
 
-    @Autowired
-    public CustomerController(CustomerService customerService) {
-        this.customerService = customerService;
-    }
+
 
     @GetMapping(value = "{customerId}", produces = MediaType.APPLICATION_JSON_VALUE)
 
@@ -30,4 +28,6 @@ public class CustomerController {
         CustomerDTO customerDTO = CustomerDTOTransformer.CUSTOMER_DTO_TRANSFORMER.customerToCustomerDTO(customer);
         return ResponseEntity.ok(customerDTO);
     }
+
+
 }

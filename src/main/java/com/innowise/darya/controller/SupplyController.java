@@ -26,15 +26,6 @@ public class SupplyController {
     }
 
 
-    @GetMapping(value = "{supplyId}", produces = MediaType.APPLICATION_JSON_VALUE)
-
-
-   public ResponseEntity<SupplyDTO> getSupplyStats(@PathVariable final Long supplyId) {
-        Supply supply = supplyService.getSupplyStats(supplyId);
-        SupplyDTO supplyDTO = SupplyDTOTransformer.SUPPLY_DTO_TRANSFORMER.supplyToSupplyDTO(supply);
-        return ResponseEntity.ok(supplyDTO);
-    }
-
     @GetMapping("/getbyid/{id}")
     public SupplyDTO getSupplyById(@PathVariable long id){
         return supplyService.getSupplyById(id);

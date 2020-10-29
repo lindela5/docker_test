@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder //(builderMethodName = "aSection")
+@Builder
 public class Section {
 
     @Id

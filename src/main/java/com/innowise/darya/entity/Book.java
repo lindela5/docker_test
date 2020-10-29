@@ -5,19 +5,18 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "books")
-//@Getter
-//@Setter
-//@EqualsAndHashCode(exclude = {"author","orderBooks","supplyBook"})
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder (builderMethodName = "aBook")
-@ToString//(exclude = {"author","orderBooks","supplyBook"})
+@ToString
 public class Book {
 
     @Id
@@ -48,10 +47,6 @@ public class Book {
     private BigDecimal price;
     private Integer stockBalances;
 
-//    @ManyToMany(mappedBy = "bookOrder")
-//    private Set<Order> orderBooks = new HashSet<>();
-//
-//    @ManyToMany(mappedBy = "bookSupply")
-//    private Set<Supply> supplyBook = new HashSet<>();
+
 
 }

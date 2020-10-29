@@ -1,5 +1,6 @@
 package com.innowise.darya.service;
 
+import com.innowise.darya.dto.AuthorDTO;
 import com.innowise.darya.entity.Author;
 import com.innowise.darya.exception.ThereIsNoSuchException;
 import com.innowise.darya.repositoty.AuthorRepository;
@@ -45,7 +46,7 @@ class AuthorServiceTest {
     @Test
     public void shouldThrowAuthorException() {
         given(authorRepository.findByAuthorId(WRONG_ID)).willReturn(null);
-        assertThrows(ThereIsNoSuchException.class, () -> authorService.getAuthorStats(WRONG_ID));
+        assertThrows(ThereIsNoSuchException.class, () -> authorService.getAuthorById(WRONG_ID));
         then(authorRepository).should(only()).findByAuthorId(WRONG_ID);
 
     }
@@ -54,7 +55,7 @@ class AuthorServiceTest {
     @Test
     public void shouldReturnAuthorStat() {
         given(authorRepository.findByAuthorId(ID)).willReturn(AUTHOR);
-        Author actual = authorService.getAuthorStats(ID);
+        AuthorDTO actual = authorService.getAuthorById(ID);
         assertEquals(AUTHOR, actual);
         then(authorRepository).should(only()).findByAuthorId(ID);
 

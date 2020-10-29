@@ -1,6 +1,7 @@
 package com.innowise.darya.controller;
 
 import com.innowise.darya.dto.AuthorDTO;
+import com.innowise.darya.dto.BookDTO;
 import com.innowise.darya.entity.Author;
 import com.innowise.darya.service.AuthorService;
 import com.innowise.darya.transformer.AuthorDTOTransformer;
@@ -25,13 +26,18 @@ public class AuthorController {
         this.authorService = authorService;
     }
 
-    @GetMapping(value = "{authorId}", produces = MediaType.APPLICATION_JSON_VALUE)
+//    @GetMapping(value = "{authorId}", produces = MediaType.APPLICATION_JSON_VALUE)
+//
+//
+//    public ResponseEntity<AuthorDTO> getAuthorStats(@PathVariable final Long authorId) {
+//        Author author = authorService.getAuthorStats(authorId);
+//        log.info(author.toString());
+//        AuthorDTO authorDTO = AuthorDTOTransformer.AUTHOR_DTO_TRANSFORMER.authorToAuthorDTO(author);
+//        return ResponseEntity.ok(authorDTO);
+//    }
 
-
-    public ResponseEntity<AuthorDTO> getAuthorStats(@PathVariable final Long authorId) {
-        Author author = authorService.getAuthorStats(authorId);
-        log.info(author.toString());
-        AuthorDTO authorDTO = AuthorDTOTransformer.AUTHOR_DTO_TRANSFORMER.authorToAuthorDTO(author);
-        return ResponseEntity.ok(authorDTO);
+    @GetMapping("/getbyid/{id}")
+    public AuthorDTO getAuthorById(@PathVariable long id){
+        return authorService.getAuthorById(id);
     }
 }

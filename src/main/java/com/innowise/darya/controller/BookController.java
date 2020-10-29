@@ -10,12 +10,11 @@ import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping(path = "/book")
@@ -29,25 +28,49 @@ public class BookController {
         this.bookService = bookService;
     }
 
-
-
-    @GetMapping(value = "{bookId}", produces = MediaType.APPLICATION_JSON_VALUE)
-
-
-    public ResponseEntity<BookDTO> getBookStats(@PathVariable final Long bookId) {
-        Book book = bookService.getBookStats(bookId);
-        log.info("Isbn книги - "+book.getIsbn()+" название - "+ book.getTitle());
-        BookDTO bookDTO = BookDTOTransformer.BOOK_DTO_TRANSFORMER.bookToBookDTO(book);
-        return ResponseEntity.ok(bookDTO);
-    }
-
-//    @GetMapping("/getauthorbyyear/{year}")
-//   public List<AuthorDTO> getAuthorByYearOfIssue(@PathVariable Integer year) {
-//        return bookService.getAuthorByYearOfIssue(year);
+//    @RequestMapping("/")
+//    public String index(Model model) {
+//
+//        return "index";
 //    }
 //
-   @GetMapping("/getbyid/{id}")
-   public BookDTO getBookById(@PathVariable long id){
-      return bookService.getBookById(id);
+//    @RequestMapping("/showBooks")
+//    public ModelAndView showBook() {
+//
+//        List<Book> books = bookService.findAll();
+//
+//        Map<String, Object> params = new HashMap<>();
+//        params.put("books", books);
+//
+//        return new ModelAndView("showBook", params);
+//    }
+
+
+    @GetMapping("/getbyid/{id}")
+    public BookDTO getBookById(@PathVariable long id) {
+        return bookService.getBookById(id);
     }
+
+    //найти всех авторов, которые издавались в этот год
+    @GetMapping("/getauthorbyyear/{year}")
+    public Set<AuthorDTO> getAuthorByYear(@PathVariable Integer year) {
+        return bookService.getAuthorByYear(year);
+    }
+
+//    @GetMapping(value = {"/", "/index"})
+//   public String index(Model model) {
+//        model.addAttribute("title", "Book");
+//        return "index";
+//    }
+//
+//    @PostMapping("filter")
+//    public String filter(@RequestParam Integer year, Map<String, Object> model) {
+//        Set<AuthorDTO> author = new HashSet<>();
+//
+//            author = bookService.getAuthorByYear(year);
+//
+//            model.put("items", author);
+//
+//        return "index";
+//    }
 }

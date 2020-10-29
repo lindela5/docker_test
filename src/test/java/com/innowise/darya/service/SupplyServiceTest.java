@@ -1,6 +1,7 @@
 package com.innowise.darya.service;
 
 import com.innowise.darya.dto.BookDTO;
+import com.innowise.darya.dto.SupplyDTO;
 import com.innowise.darya.entity.Book;
 import com.innowise.darya.entity.Supplier;
 import com.innowise.darya.entity.Supply;
@@ -14,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 import static java.math.BigDecimal.TEN;
@@ -82,7 +84,7 @@ class SupplyServiceTest {
     @Test
     public void shouldThrowSupplyException() {
         given(supplyRepository.findBySupplyId(WRONG_ID)).willReturn(null);
-        assertThrows(ThereIsNoSuchException.class, () -> supplyService.getSupplyStats(WRONG_ID));
+        assertThrows(ThereIsNoSuchException.class, () -> supplyService.getSupplyById(WRONG_ID));
         then(supplyRepository).should(only()).findBySupplyId(WRONG_ID);
 
     }
@@ -90,7 +92,7 @@ class SupplyServiceTest {
     @Test
     public void shouldReturnBookStat() {
         given(supplyRepository.findBySupplyId(ID)).willReturn(SUPPLY);
-        Supply actual = supplyService.getSupplyStats(ID);
+        SupplyDTO actual = supplyService.getSupplyById(ID);
         assertEquals(SUPPLY, actual);
         then(supplyRepository).should(only()).findBySupplyId(ID);
 

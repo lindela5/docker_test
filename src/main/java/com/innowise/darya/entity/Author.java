@@ -3,18 +3,18 @@ package com.innowise.darya.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "author")
-@Getter
-@Setter
-@EqualsAndHashCode(exclude = {"authorBooks"})
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString//(exclude = {"authorBooks"})
+@ToString
 public class Author {
 
     @Id
@@ -24,8 +24,7 @@ public class Author {
     private String lastName;
     private String country;
 
-//    @ManyToMany(mappedBy = "author")
-//    private Set<Book> authorBooks = new HashSet<>();
+
 
 
 }
