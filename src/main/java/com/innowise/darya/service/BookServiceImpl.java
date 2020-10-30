@@ -70,6 +70,17 @@ public class BookServiceImpl implements BookService{
         return authorDTOList;
     }
 
+
+    @Override
+    public BookDTO saveBook(BookDTO bookDto) {
+        Book savedBook = bookRepository.save(BookDTOTransformer.BOOK_DTO_TRANSFORMER.bookDTOToBook(bookDto));
+        return BookDTOTransformer.BOOK_DTO_TRANSFORMER.bookToBookDTO(savedBook);
+    }
+
+    @Override
+    public void deleteBook(long id) {
+        bookRepository.deleteById(String.valueOf(id));
+    }
 //    @Autowired
 //    private JdbcTemplate jtm;
 //

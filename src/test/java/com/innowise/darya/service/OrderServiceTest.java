@@ -1,12 +1,15 @@
 package com.innowise.darya.service;
 
 import com.innowise.darya.dto.BookDTO;
+import com.innowise.darya.dto.OrderDTO;
 import com.innowise.darya.entity.Book;
 import com.innowise.darya.entity.Customer;
 import com.innowise.darya.entity.Order;
 import com.innowise.darya.exception.ThereIsNoSuchException;
 import com.innowise.darya.repositoty.OrderRepository;
 import com.innowise.darya.repositoty.SupplyRepository;
+import com.innowise.darya.transformer.BookDTOTransformer;
+import com.innowise.darya.transformer.OrderDTOTransformer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -37,19 +40,19 @@ class OrderServiceTest {
     static final Long ID = 1L;
     static final Long BOOK1_ID = 2L;
     static final Long BOOK2_ID = 3L;
-    static final Book BOOK1 =
-            Book.aBook()
+    static final BookDTO BOOK1 =
+            BookDTO.builder()
                     .bookId(BOOK1_ID)
                     .price(TEN)
                     .build();
-    static final Book BOOK2 =
-            Book.aBook()
+    static final BookDTO BOOK2 =
+            BookDTO.builder()
                     .bookId(BOOK2_ID)
                     .price(TEN)
                     .build();
 
 
-    static final Set<Book> BOOK_ORDER = Set.of(
+    static final Set<BookDTO> BOOK_ORDER = Set.of(
             BOOK1,
             BOOK2);
 
@@ -74,8 +77,8 @@ class OrderServiceTest {
     static final BigDecimal AMOUNT = new BigDecimal(213);
 
     //@formatter=off
-    static final Order ORDER =
-            Order.builder()
+    static final OrderDTO ORDERDTO =
+            OrderDTO.builder()
                     .orderId(ID)
                     .bookOrder(BOOK_ORDER)
                     .customer(CUSTOMER)
@@ -85,18 +88,18 @@ class OrderServiceTest {
     //@formatter=on
 
     @Test
-    public void shouldThrowSupplyException() {
+    public void shouldThrowOrderException() {
         given(orderRepository.findByOrderId(WRONG_ID)).willReturn(null);
-        assertThrows(ThereIsNoSuchException.class, () -> orderService.getOrderStats(WRONG_ID));
+        assertThrows(ThereIsNoSuchException.class, () -> orderService.getOrderById(WRONG_ID));
         then(orderRepository).should(only()).findByOrderId(WRONG_ID);
 
     }
 
     @Test
-    public void shouldReturnBookStat() {
-        given(orderRepository.findByOrderId(ID)).willReturn(ORDER);
-        Order actual = orderService.getOrderStats(ID);
-        assertEquals(ORDER, actual);
+    public void shouldReturnOrderStat() {
+        given(orderRepository.findByOrderId(ID)).willReturn(OrderDTOTransformer.ORDER_DTO_TRANSFORMER.orderDTOToOrder(ORDERDTO));
+        OrderDTO actual = orderService.getOrderById(ID);
+        assertEquals(ORDERDTO, actual);
         then(orderRepository).should(only()).findByOrderId(ID);
 
     }

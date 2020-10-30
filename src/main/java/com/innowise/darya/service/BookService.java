@@ -16,6 +16,10 @@ public interface BookService {
 
     Set<AuthorDTO> getAuthorByYear(String year);
 
+    BookDTO saveBook(BookDTO bookDto);
+
+    void deleteBook(long bookId);
+
 
 }
 

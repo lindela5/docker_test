@@ -2,6 +2,7 @@ package com.innowise.darya.service;
 
 
 import com.innowise.darya.dto.AuthorDTO;
+import com.innowise.darya.dto.BookDTO;
 import com.innowise.darya.entity.Author;
 import com.innowise.darya.entity.Book;
 import com.innowise.darya.entity.PublishingHouse;
@@ -95,21 +96,21 @@ class BookServiceTest {
                     .build();
     //@formatter=on
 
-//    @Test
-//    public void shouldThrowBookException() {
-//        given(bookRepository.findByBookId(WRONG_ID)).willReturn(null);
-//        assertThrows(ThereIsNoSuchException.class, () -> bookService.getBookStats(WRONG_ID));
-//        then(bookRepository).should(only()).findByBookId(WRONG_ID);
-//
-//    }
+    @Test
+    public void shouldThrowBookException() {
+        given(bookRepository.findByBookId(WRONG_ID)).willReturn(null);
+        assertThrows(ThereIsNoSuchException.class, () -> bookService.getBookById(WRONG_ID));
+        then(bookRepository).should(only()).findByBookId(WRONG_ID);
 
-//    @Test
-//    public void shouldReturnBookStat() {
-//        given(bookRepository.findByBookId(ID)).willReturn(BOOK);
-//        Book actual = bookService.getBookStats(ID);
-//        assertEquals(BOOK, actual);
-//        then(bookRepository).should(only()).findByBookId(ID);
-//
-//    }
+    }
+
+    @Test
+    public void shouldReturnBookStat() {
+        given(bookRepository.findByBookId(ID)).willReturn(BOOK);
+        BookDTO actual = bookService.getBookById(ID);
+        assertEquals(BOOK, actual);
+        then(bookRepository).should(only()).findByBookId(ID);
+
+    }
 
 }
