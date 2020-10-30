@@ -10,11 +10,11 @@ import java.util.Set;
 
 public interface BookService {
 
-   // List<Book> findAll();
+    List<BookDTO> getAllBooks();
 
     BookDTO getBookById(long id);
 
-    Set<AuthorDTO> getAuthorByYear(Integer year);
+    Set<AuthorDTO> getAuthorByYear(String year);
 
 
 }

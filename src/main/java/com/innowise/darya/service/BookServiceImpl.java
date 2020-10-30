@@ -15,10 +15,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @Transactional
@@ -27,6 +24,15 @@ public class BookServiceImpl implements BookService{
     @Autowired
     private BookRepository bookRepository;
 
+    @Override
+    public List<BookDTO> getAllBooks() {
+        List<BookDTO> bookDTOList = new ArrayList<>();
+        List<Book> bookList = bookRepository.findAll();
+        for (Book book : bookList){
+            bookDTOList.add(BookDTOTransformer.BOOK_DTO_TRANSFORMER.bookToBookDTO(book));
+        }
+        return bookDTOList;
+    }
 
 
     @Override
@@ -46,8 +52,9 @@ public class BookServiceImpl implements BookService{
     }
 
     @Override
-    public Set<AuthorDTO> getAuthorByYear(Integer year) {
-        Set<Book> bookSet = bookRepository.findBookByYearOfIssue(year);
+    public Set<AuthorDTO> getAuthorByYear(String year) {
+        Integer yearOfIssue = Integer.valueOf(year);
+        Set<Book> bookSet = bookRepository.findBookByYearOfIssue(yearOfIssue);
         Set<Set<Author>> bookAuthorSet = new HashSet<>();
         for (Book book : bookSet){
             bookAuthorSet.add(book.getAuthor());

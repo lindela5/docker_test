@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{{title}}</title>
+<!--    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>-->
+<!--    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"-->
+<!--            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"-->
+<!--            crossorigin="anonymous"></script>-->
+<!--    <script src="js/bootstrap.min.js"></script>-->
+</head>
+<body>
+<h1>{{title}}</h1>
+<form method="post" action="filter">
+   Year Of Issue:
+    <input type="integer" name="Year"/>
+    <button class="button" type="submit">Find</button>
+</form>
+<br/>
+
+<table id="films" class="table-bordered">
+    <tr>
+        <th>Name</th>
+        <th>Release Date</th>
+        <th>Genre</th>
+    </tr>
+    {{#books}}
+    <tr>
+        <td>{{name}}</td>
+        <td>{{releaseDate}}</td>
+        <td>{{genre}}</td>
+    </tr>
+    {{/books}}
+</table>
+<br/>
+
+</body>
+</html>

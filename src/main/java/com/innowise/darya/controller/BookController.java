@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.*;
 
 @RestController
-@RequestMapping(path = "/book")
+//@RequestMapping(path = "/book")
 @Log
 public class BookController {
 
@@ -28,23 +28,31 @@ public class BookController {
         this.bookService = bookService;
     }
 
-//    @RequestMapping("/")
-//    public String index(Model model) {
-//
-//        return "index";
-//    }
-//
-//    @RequestMapping("/showBooks")
-//    public ModelAndView showBook() {
-//
-//        List<Book> books = bookService.findAll();
-//
-//        Map<String, Object> params = new HashMap<>();
-//        params.put("books", books);
-//
-//        return new ModelAndView("showBook", params);
-//    }
+    @GetMapping(value = {"/", "/index"})
+    public String index(Model model) {
+        model.addAttribute("title", "Book");
+        return "index";
+    }
 
+    @PostMapping("filter")
+    public String filter( @RequestParam String year, Map<String, Object> model) {
+        Set<AuthorDTO> items = new HashSet<>();
+
+        if (year != null && !year.isEmpty()) {
+            items = bookService.getAuthorByYear(year);
+        }
+
+        if (!items.isEmpty()) {
+            model.put("items", items);
+        }
+        model.put("title", "Books");
+        return "index";
+    }
+
+    @GetMapping("/all")
+    public List<BookDTO> getAllBooks(){
+        return bookService.getAllBooks();
+    }
 
     @GetMapping("/getbyid/{id}")
     public BookDTO getBookById(@PathVariable long id) {
@@ -53,7 +61,7 @@ public class BookController {
 
     //найти всех авторов, которые издавались в этот год
     @GetMapping("/getauthorbyyear/{year}")
-    public Set<AuthorDTO> getAuthorByYear(@PathVariable Integer year) {
+    public Set<AuthorDTO> getAuthorByYear(@PathVariable String year) {
         return bookService.getAuthorByYear(year);
     }
 
