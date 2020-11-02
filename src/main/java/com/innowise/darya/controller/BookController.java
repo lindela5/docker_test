@@ -1,19 +1,14 @@
 package com.innowise.darya.controller;
 
 import com.innowise.darya.dto.AuthorDTO;
-import com.innowise.darya.entity.Book;
 import com.innowise.darya.dto.BookDTO;
-import com.innowise.darya.service.AuthorService;
-import com.innowise.darya.transformer.BookDTOTransformer;
+import com.innowise.darya.entity.Section;
+
 import com.innowise.darya.service.BookService;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
 
@@ -80,7 +75,7 @@ public class BookController {
 
     //найти всех авторов, которые издавались в этот год
     @GetMapping("/getauthorbyyear/{year}")
-    public Set<AuthorDTO> getAuthorByYear(@PathVariable String year) {
+    public Set<AuthorDTO> getAuthorByYear(@RequestParam String year) {
         return bookService.getAuthorByYear(year);
     }
 
@@ -93,7 +88,11 @@ public class BookController {
         return ResponseEntity.ok().build();
     }
 
-
+    //в каких секциях лежат книги
+    @GetMapping("/getbysection/{section}")
+    public List<Section> getBySection(@PathVariable long section){
+        return bookService.getBySection(section);
+    }
 
 //    @GetMapping(value = {"/", "/index"})
 //   public String index(Model model) {
