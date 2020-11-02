@@ -10,6 +10,7 @@ import com.innowise.darya.entity.Section;
 import com.innowise.darya.exception.ThereIsNoSuchException;
 import com.innowise.darya.repositoty.BookRepository;
 import com.innowise.darya.transformer.BookDTOTransformer;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mapstruct.factory.Mappers;
@@ -34,7 +35,7 @@ class BookServiceTest {
     @Mock //создаем заглушку (или макет)
     BookRepository bookRepository;
 
-    @InjectMocks //создает экземпляр класса и внедряет @Mock созданные с @Mock (или @Spy) в этот экземпляр
+    //@InjectMocks //создает экземпляр класса и внедряет @Mock созданные с @Mock (или @Spy) в этот экземпляр
     BookService bookService;
 
     private static final Long WRONG_ID = 16L;
@@ -95,6 +96,11 @@ class BookServiceTest {
                     .stockBalances(STOCK_BALANCES)
                     .build();
     //@formatter=on
+
+    @BeforeEach
+    public void initMock() {
+        bookService = new BookServiceImpl(bookRepository);
+    }
 
     @Test
     public void shouldThrowBookException() {

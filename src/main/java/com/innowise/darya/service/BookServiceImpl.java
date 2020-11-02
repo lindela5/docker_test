@@ -20,15 +20,19 @@ import java.util.*;
 @Service
 @Transactional
 @Slf4j
-public class BookServiceImpl implements BookService{
-    @Autowired
-    private BookRepository bookRepository;
+public class BookServiceImpl implements BookService {
+
+    private final BookRepository bookRepository;
+
+    public BookServiceImpl(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
     @Override
     public List<BookDTO> getAllBooks() {
         List<BookDTO> bookDTOList = new ArrayList<>();
         List<Book> bookList = bookRepository.findAll();
-        for (Book book : bookList){
+        for (Book book : bookList) {
             bookDTOList.add(BookDTOTransformer.BOOK_DTO_TRANSFORMER.bookToBookDTO(book));
         }
         return bookDTOList;
@@ -38,7 +42,7 @@ public class BookServiceImpl implements BookService{
     @Override
     public BookDTO getBookById(long id) {
         Optional<Book> bookOptional = Optional.ofNullable(bookRepository.findByBookId(id));
-        if (!bookOptional.isPresent()){
+        if (!bookOptional.isPresent()) {
             return null;
         }
         Book book = bookOptional.get();
@@ -56,13 +60,13 @@ public class BookServiceImpl implements BookService{
         Integer yearOfIssue = Integer.valueOf(year);
         Set<Book> bookSet = bookRepository.findBookByYearOfIssue(yearOfIssue);
         Set<Set<Author>> bookAuthorSet = new HashSet<>();
-        for (Book book : bookSet){
+        for (Book book : bookSet) {
             bookAuthorSet.add(book.getAuthor());
         }
 
         Set<AuthorDTO> authorDTOList = new HashSet<>();
-        for (Set<Author> authorList : bookAuthorSet){
-            for (Author author : authorList){
+        for (Set<Author> authorList : bookAuthorSet) {
+            for (Author author : authorList) {
                 AuthorDTO authorDTO = AuthorDTOTransformer.AUTHOR_DTO_TRANSFORMER.authorToAuthorDTO(author);
                 authorDTOList.add(authorDTO);
             }
