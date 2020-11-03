@@ -17,7 +17,7 @@ public interface BookRepository extends JpaRepository<Book, String> {
 
     Set<Book> findBookByYearOfIssue(Integer yearOfIssue);
 
-    @Query("SELECT b FROM Book b where b.section = :sectionId")
+    @Query("SELECT b FROM Book b where b.section.id = :sectionId")
     List<Book> findBySectionId(Long sectionId);
 
 

@@ -126,15 +126,12 @@ public class BookServiceImpl implements BookService {
 //    }
 
     @Override
-    public List<Section> getBySection(long id) {
-        List<Section> sectionList = new ArrayList<>();
+    public List<BookDTO> getBySection(long id) {
         List<Book> bookList = bookRepository.findBySectionId(id);
-        for (Book book : bookList){
-            sectionList.add(book.getSection());
-        }
-        return sectionList;
+        log.info(bookList.size()+"");
+        return bookList.isEmpty() ? new ArrayList<>() : bookList.stream()
+                .map(BookDTOTransformer.BOOK_DTO_TRANSFORMER::bookToBookDTO)
+                .collect(Collectors.toList());
+
     }
-
-
-
 }
