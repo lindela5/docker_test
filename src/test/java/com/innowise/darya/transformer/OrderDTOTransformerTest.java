@@ -1,20 +1,15 @@
 package com.innowise.darya.transformer;
 
 import com.innowise.darya.dto.BookDTO;
-import com.innowise.darya.dto.CustomerDTO;
 import com.innowise.darya.dto.OrderDTO;
-import com.innowise.darya.dto.SupplierDTO;
 import com.innowise.darya.entity.Book;
 import com.innowise.darya.entity.Customer;
 import com.innowise.darya.entity.Order;
-import com.innowise.darya.entity.Supplier;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Set;
 
 import static java.math.BigDecimal.TEN;

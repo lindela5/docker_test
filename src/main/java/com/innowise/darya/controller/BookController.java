@@ -2,18 +2,17 @@ package com.innowise.darya.controller;
 
 import com.innowise.darya.dto.AuthorDTO;
 import com.innowise.darya.dto.BookDTO;
-import com.innowise.darya.entity.Section;
-
 import com.innowise.darya.service.BookService;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.List;
+import java.util.Set;
 
 @RestController
-@RequestMapping(path = "/book")
+@RequestMapping(path = "/book1")
 @Log
 public class BookController {
 
@@ -24,33 +23,6 @@ public class BookController {
         this.bookService = bookService;
     }
 
-//    @GetMapping(value = {"/", "/index"})
-//    public String index(Model model) {
-//        model.addAttribute("title", "Book");
-//        return "index";
-//    }
-//
-//    @PostMapping("filter")
-//    public String filter( @RequestParam String year, Map<String, Object> model) {
-//        Set<AuthorDTO> items = new HashSet<>();
-//
-//        if (year != null && !year.isEmpty()) {
-//            items = bookService.getAuthorByYear(year);
-//        }
-//
-//        if (!items.isEmpty()) {
-//            model.put("items", items);
-//        }
-//        model.put("title", "Books");
-//        return "index";
-//    }
-
-
-    @PostMapping("/save")
-    public BookDTO saveBook(@RequestBody BookDTO bookDto) {
-        log.info("Handling save users: " + bookDto);
-        return bookService.saveBook(bookDto);
-    }
 
 
     @GetMapping("/findAll")
@@ -58,24 +30,18 @@ public class BookController {
         log.info("Handling find all users request");
         return bookService.getAllBooks();
     }
-//
-//    @GetMapping("/getbyid/{id}")
-//    public BookDTO getBookById(@PathVariable long id) {
-//        log.info("Handling find by id request: " + id);
-//        return bookService.getBookById(id);
-//    }
 
-
-    @GetMapping("/getbyid")
-    public BookDTO getBookById(@RequestParam long id) {
+    @GetMapping("/getbyid/{id}")
+    public BookDTO getBookById(@PathVariable long id) {
         log.info("Handling find by id request: " + id);
         return bookService.getBookById(id);
     }
 
 
+
     //найти всех авторов, которые издавались в этот год
     @GetMapping("/getauthorbyyear/{year}")
-    public Set<AuthorDTO> getAuthorByYear(@RequestParam String year) {
+    public Set<AuthorDTO> getAuthorByYear(@PathVariable String year) {
         return bookService.getAuthorByYear(year);
     }
 
@@ -90,24 +56,9 @@ public class BookController {
 
     //в каких секциях лежат книги
     @GetMapping("/getbysection/{section}")
-    public List<Section> getBySection(@PathVariable long section){
-        return bookService.getBySection(section);
+    public List<BookDTO> getBooksBySection(@PathVariable long section){
+        return bookService.getBooksBySection(section);
     }
 
-//    @GetMapping(value = {"/", "/index"})
-//   public String index(Model model) {
-//        model.addAttribute("title", "Book");
-//        return "index";
-//    }
-//
-//    @PostMapping("filter")
-//    public String filter(@RequestParam Integer year, Map<String, Object> model) {
-//        Set<AuthorDTO> author = new HashSet<>();
-//
-//            author = bookService.getAuthorByYear(year);
-//
-//            model.put("items", author);
-//
-//        return "index";
-//    }
+
 }

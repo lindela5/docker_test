@@ -3,7 +3,6 @@ package com.innowise.darya.service;
 import com.innowise.darya.entity.PublishingHouse;
 import com.innowise.darya.exception.ThereIsNoSuchException;
 import com.innowise.darya.repositoty.PublishingHouseRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -11,8 +10,12 @@ import javax.transaction.Transactional;
 @Service
 @Transactional
 public class PublishingHouseServiceImpl implements PublishingHouseService{
-    @Autowired
+
     private PublishingHouseRepository publishingHouseRepository;
+
+    public PublishingHouseServiceImpl(PublishingHouseRepository publishingHouseRepository) {
+        this.publishingHouseRepository = publishingHouseRepository;
+    }
 
 
     public PublishingHouse getPublisherStats(Long publishingHouseId) {

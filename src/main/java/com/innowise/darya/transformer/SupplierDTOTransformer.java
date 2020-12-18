@@ -1,9 +1,7 @@
 package com.innowise.darya.transformer;
 
 import com.innowise.darya.dto.SupplierDTO;
-import com.innowise.darya.dto.SupplyDTO;
 import com.innowise.darya.entity.Supplier;
-import com.innowise.darya.entity.Supply;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

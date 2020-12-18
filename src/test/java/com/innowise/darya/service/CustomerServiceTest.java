@@ -1,11 +1,12 @@
 package com.innowise.darya.service;
 
+import com.innowise.darya.dto.CustomerDTO;
 import com.innowise.darya.entity.Customer;
 import com.innowise.darya.exception.ThereIsNoSuchException;
 import com.innowise.darya.repositoty.CustomerRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -21,7 +22,7 @@ class CustomerServiceTest {
     @Mock //создаем заглушку (или макет)
     CustomerRepository customerRepository;
 
-    @InjectMocks //создает экземпляр класса и внедряет @Mock созданные с @Mock (или @Spy) в этот экземпляр
+    // @InjectMocks //создает экземпляр класса и внедряет @Mock созданные с @Mock (или @Spy) в этот экземпляр
     CustomerService customerService;
 
     private static final Long WRONG_ID = 12L;
@@ -33,6 +34,15 @@ class CustomerServiceTest {
     static final String EMAIL = "mama_koshka@gmail.com";
 
     //@formatter=off
+    static final CustomerDTO CUSTOMER_DTO =
+            CustomerDTO.builder()
+                    .customerId(ID)
+                    .firstName(FIRST_NAME)
+                    .lastName(LAST_NAME)
+                    .address(ADDRESS)
+                    .phone(PHONE)
+                    .email(EMAIL)
+                    .build();
 
     static final Customer CUSTOMER =
             Customer.builder()
@@ -45,6 +55,10 @@ class CustomerServiceTest {
                     .build();
     //@formatter=on
 
+    @BeforeEach
+    public void initMock() {
+        customerService = new CustomerServiceImpl(customerRepository);
+    }
 
     @Test
     public void shouldThrowCustomerException() {
@@ -58,8 +72,8 @@ class CustomerServiceTest {
     @Test
     public void shouldReturnCustomerStat() {
         given(customerRepository.findByCustomerId(ID)).willReturn(CUSTOMER);
-        Customer actual = customerService.getCustomerStats(ID);
-        assertEquals(CUSTOMER, actual);
+        CustomerDTO actual = customerService.getCustomerStats(ID);
+        assertEquals(CUSTOMER_DTO, actual);
         then(customerRepository).should(only()).findByCustomerId(ID);
 
     }

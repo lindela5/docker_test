@@ -4,9 +4,9 @@ import com.innowise.darya.dto.AuthorDTO;
 import com.innowise.darya.entity.Author;
 import com.innowise.darya.exception.ThereIsNoSuchException;
 import com.innowise.darya.repositoty.AuthorRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -22,7 +22,7 @@ class AuthorServiceTest {
     @Mock //создаем заглушку (или макет)
     AuthorRepository authorRepository;
 
-    @InjectMocks //создает экземпляр класса и внедряет @Mock созданные с @Mock (или @Spy) в этот экземпляр
+    //   @InjectMocks //создает экземпляр класса и внедряет @Mock созданные с @Mock (или @Spy) в этот экземпляр
     AuthorService authorService;
 
     private static final Long WRONG_ID = 8L;
@@ -31,7 +31,15 @@ class AuthorServiceTest {
     static final String LAST_NAME = "Christie";
     static final String COUNTRY = "United Kingdom";
 
+
     //@formatter=off
+    static final AuthorDTO AUTHOR_DTO =
+            AuthorDTO.builder()
+                    .authorId(ID)
+                    .authorFirstName(FIRST_NAME)
+                    .authorLastName(LAST_NAME)
+                    .authorCountry(COUNTRY)
+                    .build();
 
     static final Author AUTHOR =
             Author.builder()
@@ -42,9 +50,13 @@ class AuthorServiceTest {
                     .build();
     //@formatter=on
 
+    @BeforeEach
+    public void initMock() {
+        authorService = new AuthorServiceImpl(authorRepository);
+    }
 
     @Test
-    public void shouldThrowAuthorException() {
+    public void shouldThrowAuthorThereIsNoSuchException() {
         given(authorRepository.findByAuthorId(WRONG_ID)).willReturn(null);
         assertThrows(ThereIsNoSuchException.class, () -> authorService.getAuthorById(WRONG_ID));
         then(authorRepository).should(only()).findByAuthorId(WRONG_ID);
@@ -53,10 +65,10 @@ class AuthorServiceTest {
 
 
     @Test
-    public void shouldReturnAuthorStat() {
+    public void shouldReturnAuthorById() {
         given(authorRepository.findByAuthorId(ID)).willReturn(AUTHOR);
         AuthorDTO actual = authorService.getAuthorById(ID);
-        assertEquals(AUTHOR, actual);
+        assertEquals(AUTHOR_DTO, actual);
         then(authorRepository).should(only()).findByAuthorId(ID);
 
     }

@@ -1,11 +1,12 @@
 package com.innowise.darya.service;
 
+import com.innowise.darya.dto.PublishingHouseDTO;
 import com.innowise.darya.entity.PublishingHouse;
 import com.innowise.darya.exception.ThereIsNoSuchException;
 import com.innowise.darya.repositoty.PublishingHouseRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -21,7 +22,7 @@ class PublishingHouseServiceTest {
     @Mock //создаем заглушку (или макет)
     PublishingHouseRepository publishingHouseRepository;
 
-    @InjectMocks //создает экземпляр класса и внедряет @Mock созданные с @Mock (или @Spy) в этот экземпляр
+ //   @InjectMocks //создает экземпляр класса и внедряет @Mock созданные с @Mock (или @Spy) в этот экземпляр
     PublishingHouseService publishingHouseService;
 
     private static final Long WRONG_ID = 8L;
@@ -30,6 +31,12 @@ class PublishingHouseServiceTest {
     static final String ADDRESS = "21 Zvezdny Boulevard, Ostankinsky, Moscow";
 
     //@formatter=off
+    static final PublishingHouseDTO PUBLISHING_HOUSE_DTO =
+            PublishingHouseDTO.builder()
+                    .publishingHouseId(ID)
+                    .publisherName(NAME_PUBLISHER)
+                    .publisherAddress(ADDRESS)
+                    .build();
 
     static final PublishingHouse PUBLISHING_HOUSE =
             PublishingHouse.builder()
@@ -39,6 +46,10 @@ class PublishingHouseServiceTest {
                     .build();
     //@formatter=on
 
+    @BeforeEach
+    public void initMock() {
+        publishingHouseService = new PublishingHouseServiceImpl(publishingHouseRepository);
+    }
 
     @Test
     public void shouldThrowPublishingHouseException() {

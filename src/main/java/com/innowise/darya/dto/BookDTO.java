@@ -1,13 +1,13 @@
 package com.innowise.darya.dto;
 
-import com.innowise.darya.entity.Author;
 import com.innowise.darya.entity.PublishingHouse;
 import com.innowise.darya.entity.Section;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Data
@@ -25,4 +25,5 @@ public class BookDTO {
     private PublishingHouse publishingHouse;
     private BigDecimal price;
     private Integer stockBalances;
+    private String picture;
 }

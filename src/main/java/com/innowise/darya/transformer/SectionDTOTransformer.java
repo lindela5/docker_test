@@ -1,8 +1,6 @@
 package com.innowise.darya.transformer;
 
-import com.innowise.darya.dto.AuthorDTO;
 import com.innowise.darya.dto.SectionDTO;
-import com.innowise.darya.entity.Author;
 import com.innowise.darya.entity.Section;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;

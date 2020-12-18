@@ -7,22 +7,19 @@ import com.innowise.darya.entity.Customer;
 import com.innowise.darya.entity.Order;
 import com.innowise.darya.exception.ThereIsNoSuchException;
 import com.innowise.darya.repositoty.OrderRepository;
-import com.innowise.darya.repositoty.SupplyRepository;
-import com.innowise.darya.transformer.BookDTOTransformer;
-import com.innowise.darya.transformer.OrderDTOTransformer;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Set;
 
 import static java.math.BigDecimal.TEN;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.only;
@@ -33,28 +30,42 @@ class OrderServiceTest {
     @Mock
     OrderRepository orderRepository;
 
-    @InjectMocks
+//    @InjectMocks
     OrderService orderService;
 
     private static final Long WRONG_ID = 18L;
     static final Long ID = 1L;
     static final Long BOOK1_ID = 2L;
     static final Long BOOK2_ID = 3L;
-    static final BookDTO BOOK1 =
+    static final Book BOOK1 =
+            Book.aBook()
+                    .bookId(BOOK1_ID)
+                    .price(TEN)
+                    .build();
+    static final Book BOOK2 =
+            Book.aBook()
+                    .bookId(BOOK2_ID)
+                    .price(TEN)
+                    .build();
+
+    static final BookDTO BOOK1_DTO =
             BookDTO.builder()
                     .bookId(BOOK1_ID)
                     .price(TEN)
                     .build();
-    static final BookDTO BOOK2 =
+
+    static final BookDTO BOOK2_DTO =
             BookDTO.builder()
                     .bookId(BOOK2_ID)
                     .price(TEN)
                     .build();
 
-
-    static final Set<BookDTO> BOOK_ORDER = Set.of(
+    static final Set<Book> BOOK_ORDER = Set.of(
             BOOK1,
             BOOK2);
+    static final Set<BookDTO> BOOK_ORDER_DTO = Set.of(
+            BOOK1_DTO,
+            BOOK2_DTO);
 
 
     static final Long CUSTOMER_ID = 2L;
@@ -77,8 +88,17 @@ class OrderServiceTest {
     static final BigDecimal AMOUNT = new BigDecimal(213);
 
     //@formatter=off
-    static final OrderDTO ORDERDTO =
+    static final OrderDTO ORDER_DTO =
             OrderDTO.builder()
+                    .orderId(ID)
+                    .bookOrder(BOOK_ORDER_DTO)
+                    .customer(CUSTOMER)
+                    .orderDate(ORDER_DATE)
+                    .amount(AMOUNT)
+                    .build();
+
+    static final Order ORDER =
+            Order.builder()
                     .orderId(ID)
                     .bookOrder(BOOK_ORDER)
                     .customer(CUSTOMER)
@@ -87,8 +107,13 @@ class OrderServiceTest {
                     .build();
     //@formatter=on
 
+    @BeforeEach
+    public void initMock() {
+        orderService = new OrderServiceImpl(orderRepository);
+    }
+
     @Test
-    public void shouldThrowOrderException() {
+    public void shouldThrowOrderThereIsNoSuchException() {
         given(orderRepository.findByOrderId(WRONG_ID)).willReturn(null);
         assertThrows(ThereIsNoSuchException.class, () -> orderService.getOrderById(WRONG_ID));
         then(orderRepository).should(only()).findByOrderId(WRONG_ID);
@@ -96,10 +121,10 @@ class OrderServiceTest {
     }
 
     @Test
-    public void shouldReturnOrderStat() {
-        given(orderRepository.findByOrderId(ID)).willReturn(OrderDTOTransformer.ORDER_DTO_TRANSFORMER.orderDTOToOrder(ORDERDTO));
+    public void shouldReturnOrderById() {
+        given(orderRepository.findByOrderId(ID)).willReturn(ORDER);
         OrderDTO actual = orderService.getOrderById(ID);
-        assertEquals(ORDERDTO, actual);
+        assertEquals(ORDER_DTO, actual);
         then(orderRepository).should(only()).findByOrderId(ID);
 
     }

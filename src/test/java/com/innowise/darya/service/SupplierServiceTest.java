@@ -1,11 +1,12 @@
 package com.innowise.darya.service;
 
+import com.innowise.darya.dto.SupplierDTO;
 import com.innowise.darya.entity.Supplier;
 import com.innowise.darya.exception.ThereIsNoSuchException;
 import com.innowise.darya.repositoty.SupplierRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -21,7 +22,7 @@ class SupplierServiceTest {
     @Mock //создаем заглушку (или макет)
     SupplierRepository supplierRepository;
 
-    @InjectMocks //создает экземпляр класса и внедряет @Mock созданные с @Mock (или @Spy) в этот экземпляр
+   // @InjectMocks //создает экземпляр класса и внедряет @Mock созданные с @Mock (или @Spy) в этот экземпляр
     SupplierService supplierService;
 
     private static final Long WRONG_ID = 8L;
@@ -30,7 +31,15 @@ class SupplierServiceTest {
     static final String ADDRESS = "14 Pinskaya Street, Gomel, Belarus";
     static final String PHONE = "+375291251256";
 
+
     //@formatter=off
+    static final SupplierDTO SUPPLIER_DTO =
+            SupplierDTO.builder()
+                    .id(ID)
+                    .supplierName(SUPPLIER_NAME)
+                    .address(ADDRESS)
+                    .phone(PHONE)
+                    .build();
 
     static final Supplier SUPPLIER =
             Supplier.builder()
@@ -41,9 +50,13 @@ class SupplierServiceTest {
                     .build();
     //@formatter=on
 
+    @BeforeEach
+    public void initMock() {
+        supplierService = new SupplierServiceImpl(supplierRepository);
+    }
 
     @Test
-    public void shouldThrowSupplierException() {
+    public void shouldThrowSupplierThereIsNoSuchException() {
         given(supplierRepository.findById(WRONG_ID)).willReturn(null);
         assertThrows(ThereIsNoSuchException.class, () -> supplierService.getSupplierStats(WRONG_ID));
         then(supplierRepository).should(only()).findById(WRONG_ID);

@@ -1,9 +1,9 @@
 package com.innowise.darya.service;
 
-import com.innowise.darya.entity.Customer;
+import com.innowise.darya.dto.CustomerDTO;
 
 
 public interface CustomerService {
 
-    Customer getCustomerStats(Long customerId);
+    CustomerDTO getCustomerStats(Long customerId);
 }

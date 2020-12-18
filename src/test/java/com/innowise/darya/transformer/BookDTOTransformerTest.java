@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Set;
 
 import static com.innowise.darya.entity.Book.aBook;

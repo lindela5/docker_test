@@ -5,7 +5,7 @@ import com.innowise.darya.entity.Section;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SectionDTOTransformerTest {
 

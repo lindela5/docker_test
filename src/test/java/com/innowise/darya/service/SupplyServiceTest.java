@@ -7,15 +7,14 @@ import com.innowise.darya.entity.Supplier;
 import com.innowise.darya.entity.Supply;
 import com.innowise.darya.exception.ThereIsNoSuchException;
 import com.innowise.darya.repositoty.SupplyRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Set;
 
 import static java.math.BigDecimal.TEN;
@@ -31,7 +30,7 @@ class SupplyServiceTest {
     @Mock
     SupplyRepository supplyRepository;
 
-    @InjectMocks
+  //  @InjectMocks
     SupplyService supplyService;
 
     private static final Long WRONG_ID = 18L;
@@ -49,15 +48,29 @@ class SupplyServiceTest {
                     .price(TEN)
                     .build();
 
+    static final BookDTO BOOK1_DTO =
+            BookDTO.builder()
+                    .bookId(BOOK1_ID)
+                    .price(TEN)
+                    .build();
+
+    static final BookDTO BOOK2_DTO =
+            BookDTO.builder()
+                    .bookId(BOOK2_ID)
+                    .price(TEN)
+                    .build();
 
     static final Set<Book> BOOK_SUPPLY = Set.of(
             BOOK1,
             BOOK2);
-
+    static final Set<BookDTO> BOOK_SUPPLY_DTO = Set.of(
+            BOOK1_DTO,
+            BOOK2_DTO);
 
     static final String SUPPLIER_NAME = "Perfect books";
     static final String ADDRESS = "14 Pinskaya Street, Gomel, Belarus";
     static final String PHONE = "+375291251256";
+
     static final Supplier SUPPLIER = Supplier.builder()
             .id(ID)
             .supplierName(SUPPLIER_NAME)
@@ -70,6 +83,14 @@ class SupplyServiceTest {
 
 
     //@formatter=off
+    static final SupplyDTO SUPPLY_DTO =
+            SupplyDTO.builder()
+                    .supplyId(ID)
+                    .bookSupply(BOOK_SUPPLY_DTO)
+                    .supplier(SUPPLIER)
+                    .supplyDate(SUPPLY_DATE)
+                    .supplierPrice(SUPPLIER_PRICE)
+                    .build();
 
     static final Supply SUPPLY =
             Supply.builder()
@@ -81,8 +102,14 @@ class SupplyServiceTest {
                     .build();
     //@formatter=on
 
+
+    @BeforeEach
+    public void initMock() {
+        supplyService = new SupplyServiceImpl(supplyRepository);
+    }
+
     @Test
-    public void shouldThrowSupplyException() {
+    public void shouldThrowSupplyThereIsNoSuchException() {
         given(supplyRepository.findBySupplyId(WRONG_ID)).willReturn(null);
         assertThrows(ThereIsNoSuchException.class, () -> supplyService.getSupplyById(WRONG_ID));
         then(supplyRepository).should(only()).findBySupplyId(WRONG_ID);
@@ -90,10 +117,10 @@ class SupplyServiceTest {
     }
 
     @Test
-    public void shouldReturnBookStat() {
+    public void shouldReturnSupplyById() {
         given(supplyRepository.findBySupplyId(ID)).willReturn(SUPPLY);
         SupplyDTO actual = supplyService.getSupplyById(ID);
-        assertEquals(SUPPLY, actual);
+        assertEquals(SUPPLY_DTO, actual);
         then(supplyRepository).should(only()).findBySupplyId(ID);
 
     }
