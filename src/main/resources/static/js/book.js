@@ -17,7 +17,7 @@ function searchById() {
             document.getElementById("bookList").innerHTML = html;
         }
     };
-    xhttp.open("GET", "http://localhost:8080/book/getbyid?id=" + id, true);
+    xhttp.open("GET", "http://localhost:9090/books/getbyid?id=" + id, true);
     xhttp.send();
 }
 
@@ -48,14 +48,14 @@ function searchBySection() {
             })
         }
     };
-    xhttp.open("GET", "http://localhost:8080/book/getbysection?section=" + id, true);
+    xhttp.open("GET", "http://localhost:9090/books/getbysection?section=" + id, true);
     xhttp.send();
 }
 
 
 function deleteBook(bookId) {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("DELETE", "http://localhost:8080/book/delete/" + bookId, true);
+    xhttp.open("DELETE", "http://localhost:9090/books/delete/" + bookId, true);
     xhttp.send();
 }
 
@@ -65,7 +65,7 @@ function createBook() {
     var bookYearOfIssue = document.getElementById("book_year_of_issue").value;
 
     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-    xmlhttp.open("POST", "http://localhost:8080/book/save");
+    xmlhttp.open("POST", "http://localhost:9090/books/save");
     xmlhttp.setRequestHeader("Content-Type", "application/json");
     xmlhttp.send(JSON.stringify({name: bookTitle, login: bookIsbn, email: bookYearOfIssue}));
 
@@ -100,7 +100,7 @@ function loadBooks() {
 
         }
     };
-    xhttp.open("GET", "http://localhost:8080/book/findAll", true);
+    xhttp.open("GET", "http://localhost:9090/books/findAll", true);
     xhttp.send();
 }
 

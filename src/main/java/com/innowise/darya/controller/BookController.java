@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping(path = "/book1")
+@RequestMapping(path = "/books")
 @Log
 public class BookController {
 
@@ -32,7 +32,7 @@ public class BookController {
     }
 
     @GetMapping("/getbyid/{id}")
-    public BookDTO getBookById(@PathVariable long id) {
+    public BookDTO getBookById(@RequestParam long id) {
         log.info("Handling find by id request: " + id);
         return bookService.getBookById(id);
     }
@@ -56,7 +56,7 @@ public class BookController {
 
     //в каких секциях лежат книги
     @GetMapping("/getbysection/{section}")
-    public List<BookDTO> getBooksBySection(@PathVariable long section){
+    public List<BookDTO> getBooksBySection(@RequestParam long section){
         return bookService.getBooksBySection(section);
     }
 

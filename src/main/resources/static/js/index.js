@@ -38,7 +38,7 @@ function loadBooks() {
 
         }
     };
-    xhttp.open("GET", "http://localhost:8080/book/findAll", true);
+    xhttp.open("GET", "http://localhost:9090/books/findAll", true);
     xhttp.send();
 }
 
