@@ -2,7 +2,8 @@ import logo from './logo.svg';
 import React from "react";
 import './App.css';
 import Books from "./component/Books";
-import {Route, Router} from "react-router";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import Main from "./component/Main";
 
 function App() {
     // return (
@@ -24,10 +25,15 @@ function App() {
     //   </div>
     // );
     return (
-        <Router>
-            <Route exact path="/" component={Books}/>
-            <Route exact path="/books" component={Books}/>
-        </Router>
+        // <div><span>sss</span></div>
+        <>
+            {/*<BrowserRouter>*/}
+                {/*<Switch>*/}
+                    <Route exact path="/" component={Main}/>
+                    <Route exact path="/books" component={Books}/>
+                {/*</Switch>*/}
+            {/*</BrowserRouter>*/}
+        </>
     );
 }
 

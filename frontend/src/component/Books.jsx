@@ -1,7 +1,10 @@
 import React from "react";
-import {render} from "@testing-library/react";
+import Navbar from "./Navbar";
 
 export default function Books() {
 
-    return <div>sssssss</div>
+    return <div>
+        <Navbar/>
+        <span>books page</span>
+    </div>;
 };
