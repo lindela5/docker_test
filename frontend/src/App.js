@@ -3,7 +3,7 @@ import React from "react";
 import './App.css';
 import Books from "./component/Books";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import Main from "./component/Main";
+import {Main} from "./component/Main";
 
 function App() {
     // return (
