@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import React from "react";
 import './App.css';
-import Books from "./component/Books";
+import Books from "./component/Books.jsx";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {Main} from "./component/Main";
 
