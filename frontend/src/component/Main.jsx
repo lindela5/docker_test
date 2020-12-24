@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import axios from "axios";
 import {Book} from "./Book";
+import Sections from "./Sections";
 
 export class Main extends React.Component {
     state = {
@@ -19,6 +20,7 @@ export class Main extends React.Component {
 
         return (<div>
             <Navbar/>
+            <Sections/>
             <span>{books}</span>
         </div>);
     };
