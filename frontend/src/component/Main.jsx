@@ -16,12 +16,12 @@ export class Main extends React.Component {
     render = () => {
         console.log(this.state.books);
         const books = this.state.books.length > 0 ?
-            this.state.books.map((book) => <Book book={book}/>) : <div>No such book</div>
+            this.state.books.map((book) => <Book key={book.bookId} book={book}/>) : <div>No such book</div>
 
         return (<div>
             <Navbar/>
             <Sections/>
-            <span>{books}</span>
+            <span>{books}</span>// вызывать BookSection all="true/false"
         </div>);
     };
 

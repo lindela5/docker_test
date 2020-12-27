@@ -2,8 +2,9 @@ import logo from './logo.svg';
 import React from "react";
 import './App.css';
 import Books from "./component/Books.jsx";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {Route} from "react-router-dom";
 import {Main} from "./component/Main";
+import BookSection from "./component/BookSection";
 
 function App() {
     // return (
@@ -28,13 +29,14 @@ function App() {
         // <div><span>sss</span></div>
         <>
             {/*<BrowserRouter>*/}
-                {/*<Switch>*/}
-                    <Route exact path="/" component={Main}/>
-                    <Route exact path="/books" component={Books}/>
+            {/*<Switch>*/}
+            <Route exact path="/" component={Main}/>
+            <Route exact path="/books" component={Books}/>
+            <Route exact path="/section/:id" component={BookSection}/>
                 {/*</Switch>*/}
-            {/*</BrowserRouter>*/}
-        </>
-    );
-}
+                {/*</BrowserRouter>*/}
+            </>
+            );
+            }
 
 export default App;

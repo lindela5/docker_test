@@ -90,7 +90,7 @@ public class BookController {
 
     //в каких секциях лежат книги
     @GetMapping("/getbysection/{section}")
-    public List<BookDTO> getBooksBySection(@RequestParam long section){
+    public List<BookDTO> getBooksBySection(@PathVariable long section){
         return bookService.getBooksBySection(section);
     }
 

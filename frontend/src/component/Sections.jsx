@@ -14,17 +14,25 @@ class Sections extends React.Component {
         axios.get("/section/findAll", config)
             .then(res => this.setState({sections: res.data}))
             .catch(error => console.log(error))
-            };
+    };
+
+    // renderSectionBooks(sectionId) {
+    //     console.log(sectionId);
+    //
+    // };
+
 
     render = () => {
         console.log(this.state.sections);
+
+
+        const sections = this.state.sections.map(section =>
+            <NavItem key={section.id}>
+                <NavLink href={"/section/" + section.id}>{section.nameSection}</NavLink>
+            </NavItem>);
         return (<div>
-                <p>List Based</p>
-                <p>{this.state.sections.nameSection}</p>
-                <Nav vertical>
-                    <NavItem>
-                        <NavLink href="#">{this.state.sections.nameSection}</NavLink>
-                    </NavItem>
+                <Nav vertical className="flex-column">
+                    {sections}
                 </Nav>
             </div>
 
