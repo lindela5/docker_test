@@ -16,7 +16,8 @@ export class Main extends React.Component {
             {/*<Sections/>*/}
             <BookSection all={true}/>
             {/*<span>{books}</span>// вызывать BookSection all="true/false"*/}
-        </div>);
+        </div>
+        );
     };
 
 

@@ -14,16 +14,17 @@ export class Book extends React.Component {
     }
 
 
-
     render = () => {
+        const authors = this.props.book.bookAuthor.map(author => author.authorLastName).join(", ");
+        console.log(this.props.book.bookAuthor)
         return (<div key={this.props.book.bookId}>
             <Card className="card" style={{width: '18rem'}}>
                 {/*{this.props.book.bookTitle}*/}
                 <CardImg className="card-img-top" variant="top" src={this.props.book.picture}/>
                 <CardBody>
-                    <CardTitle>{this.props.book.bookTitle}</CardTitle>
+                    {/*<CardTitle>{this.props.book.bookTitle}</CardTitle>*/}
                     <CardText>
-                        {/*<span>Author(s): {this.props.book.bookAuthor}</span>*/}
+                        <span>Author(s): {authors}</span><br />
                         <span>Year: {this.props.book.yearOfIssue}</span><br />
                         <span>Price: {this.props.book.price}$</span>
                     </CardText>
