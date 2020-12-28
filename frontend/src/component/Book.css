@@ -2,6 +2,7 @@
     width: 18rem;
     float: left;
     height: 27rem;
+    grid-area: a;
 }
 
 .card-img-top{
@@ -12,12 +13,23 @@
 .card-title{
     height: 50px;
 }
-.cardgroup{
+.card-group{
     display: grid;
-    grid-template-areas:
-     "card card card card"
-     "card card card card"
-     "card card card card"
-     "card card card";
+    /*grid-column-gap: 15px;*/
+    /*grid-row-gap: 15px;*/
+    /*grid-template-areas:*/
+    /* "a a a a a"*/
+    /* "a a a a a"*/
+    /* "a a a a a";*/
+    /*grid-template-columns: 1fr 10fr;*/
+}
 
+.nav-section{
+    border: 2px solid gray;
+    color:black;
+    background: lightgray;
+}
+
+.flex-column{
+    float: left;
 }

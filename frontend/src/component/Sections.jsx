@@ -1,6 +1,7 @@
 import React from 'react'
 import {Nav, NavItem, NavLink} from 'reactstrap';
 import axios from 'axios'
+import './Book.css';
 
 class Sections extends React.Component {
     state = {
@@ -29,7 +30,7 @@ class Sections extends React.Component {
 
         const sections = this.state.sections.map(section =>
             <NavItem key={section.id}>
-                <NavLink href={"/section/" + section.id}>{section.nameSection}</NavLink>
+                <NavLink href={"/section/" + section.id} className="nav-section">{section.nameSection}</NavLink>
             </NavItem>);
         return (<div>
                 <Nav vertical className="flex-column">

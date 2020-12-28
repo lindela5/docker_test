@@ -46,7 +46,7 @@ class BookSection extends React.Component {
         return (<div>
             <Navbar/>
             <Sections/>
-            <CardGroup className="cardgroup">
+            <CardGroup className="card-group">
             <span>{books}</span>
             </CardGroup>
         </div>);
