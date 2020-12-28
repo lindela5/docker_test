@@ -10,6 +10,12 @@
     max-height: 150px;
 }
 
+.img-fluid {
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
+
 .card-title{
     height: 50px;
 }
