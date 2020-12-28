@@ -2,10 +2,14 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import {Button} from '@material-ui/core';
 import './Book.css';
+// import {
+//     Card, CardImg, CardText, CardBody,
+//     CardTitle, CardSubtitle, Button
+// } from 'reactstrap';
 import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button
-} from 'reactstrap';
+    Card,  Button
+} from "react-bootstrap";
+
 
 export class Book extends React.Component {
 
@@ -17,22 +21,20 @@ export class Book extends React.Component {
     render = () => {
         const authors = this.props.book.bookAuthor.map(author => author.authorLastName).join(", ");
         console.log(this.props.book.bookAuthor)
-        return (<div key={this.props.book.bookId}>
-            <Card className="card" style={{width: '18rem'}}>
+        return (<Card key={this.props.book.bookId} className="card">
                 {/*{this.props.book.bookTitle}*/}
-                <CardImg className="card-img-top" variant="top" src={this.props.book.picture}/>
-                <CardBody>
+                <Card.Img className="card-img-top" variant="top" src={this.props.book.picture}/>
+                <Card.Body>
                     {/*<CardTitle>{this.props.book.bookTitle}</CardTitle>*/}
-                    <CardText>
+                    <Card.Text>
                         <span>Author(s): {authors}</span><br />
                         <span>Year: {this.props.book.yearOfIssue}</span><br />
                         <span>Price: {this.props.book.price}$</span>
-                    </CardText>
+                    </Card.Text>
                     <Button variant="primary">Купить</Button>
-                </CardBody>
+                </Card.Body>
 
-            </Card>
-        </div>)
+            </Card>)
 
     };
 

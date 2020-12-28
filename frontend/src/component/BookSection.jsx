@@ -3,7 +3,8 @@ import Sections from "./Sections";
 import axios from "axios";
 import {Book} from "./Book";
 import Navbar from "./Navbar";
-import {CardGroup} from 'reactstrap';
+import {CardColumns} from "react-bootstrap";
+// import {CardGroup, CardColumns} from 'reactstrap';
 import './Book.css';
 
 class BookSection extends React.Component {
@@ -11,6 +12,7 @@ class BookSection extends React.Component {
         sectionName: "",
         books: []
     }
+
     constructor(props) {
         super(props);
     }
@@ -46,9 +48,11 @@ class BookSection extends React.Component {
         return (<div>
             <Navbar/>
             <Sections/>
-            <CardGroup className="card-group">
-            <span>{books}</span>
-            </CardGroup>
+            <div className="container-fluid">
+            <CardColumns>
+               {books}
+            </CardColumns>
+            </div>
         </div>);
     }
 }
