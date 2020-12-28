@@ -1,7 +1,7 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import {Button} from '@material-ui/core';
-import './css/Book.css';
+import './Book.css';
 import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button
@@ -26,7 +26,7 @@ export class Book extends React.Component {
                         {/*<span>Author(s): {this.props.book.bookAuthor}</span>*/}
                         <span>Year: {this.props.book.yearOfIssue}</span><br />
                         <span>Price: {this.props.book.price}$</span>
-                            </CardText>
+                    </CardText>
                     <Button variant="primary">Купить</Button>
                 </CardBody>
 

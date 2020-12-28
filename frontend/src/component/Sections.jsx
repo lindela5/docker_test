@@ -7,6 +7,8 @@ class Sections extends React.Component {
         sections: []
     }
 
+
+
     componentDidMount() {
         const config = {
             headers: {'Accept': 'application/json'},
@@ -24,7 +26,6 @@ class Sections extends React.Component {
 
     render = () => {
         console.log(this.state.sections);
-
 
         const sections = this.state.sections.map(section =>
             <NavItem key={section.id}>

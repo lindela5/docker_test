@@ -1,0 +1,23 @@
+.card{
+    width: 18rem;
+    float: left;
+    height: 27rem;
+}
+
+.card-img-top{
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.card-title{
+    height: 50px;
+}
+.cardgroup{
+    display: grid;
+    grid-template-areas:
+     "card card card card"
+     "card card card card"
+     "card card card card"
+     "card card card";
+
+}

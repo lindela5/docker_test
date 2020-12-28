@@ -3,18 +3,32 @@ import Sections from "./Sections";
 import axios from "axios";
 import {Book} from "./Book";
 import Navbar from "./Navbar";
+import {CardGroup} from 'reactstrap';
+import './Book.css';
 
 class BookSection extends React.Component {
     state = {
         sectionName: "",
         books: []
     }
+    constructor(props) {
+        super(props);
+    }
+
 
     getBooks = () => {
         const config = {headers: {'Accept': 'application/json'}};
-        const sectionId = this.props.match.params.id;
 
-        axios.get("/book/getbysection/" + sectionId, config)
+        let urlBooks;
+
+        if (this.props.all) {
+            urlBooks = "/book/findAll";
+        } else {
+            const sectionId = this.props.match.params.id;
+            urlBooks = "/book/getbysection/" + sectionId;
+        }
+
+        axios.get(urlBooks, config)
             .then(response => this.setState({books: response.data}))
             .catch(error => console.log(error))
     };
@@ -32,7 +46,9 @@ class BookSection extends React.Component {
         return (<div>
             <Navbar/>
             <Sections/>
+            <CardGroup className="cardgroup">
             <span>{books}</span>
+            </CardGroup>
         </div>);
     }
 }
