@@ -31,7 +31,9 @@ export class Book extends React.Component {
                         <span>Year: {this.props.book.yearOfIssue}</span><br />
                         <span>Price: {this.props.book.price}$</span>
                     </Card.Text>
-                    <Button variant="primary">Купить</Button>
+
+                    <Button variant="primary" className="button">Купить</Button>
+                    <Button variant="primary" className="button">Добавить в избранное</Button>
                 </Card.Body>
 
             </Card>)

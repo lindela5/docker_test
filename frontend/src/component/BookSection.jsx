@@ -3,6 +3,7 @@ import Sections from "./Sections";
 import axios from "axios";
 import {Book} from "./Book";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 import {CardColumns} from "react-bootstrap";
 // import {CardGroup, CardColumns} from 'reactstrap';
 import './Book.css';
@@ -46,12 +47,18 @@ class BookSection extends React.Component {
             this.state.books.map((book) => <Book key={book.bookId} book={book}/>) : <div>No such book</div>
 
         return (<div>
+            <div className="flex-container flex-end"><p>admin</p></div>
+            <div className="fig"><img src="https://i.ibb.co/tzy7qSS/unnamed.png" className="img-fluid"
+                                      alt="Responsive image">
+            </img>
+            </div>
             <Navbar/>
             <Sections/>
             <div className="container-fluid">
             <CardColumns>
                {books}
             </CardColumns>
+                <Footer/>
             </div>
         </div>);
     }

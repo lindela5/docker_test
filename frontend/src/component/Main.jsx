@@ -12,10 +12,6 @@ export class Main extends React.Component {
      render = () => {
 
         return (<div>
-            <div className="fig"><img src="https://i.ibb.co/tzy7qSS/unnamed.png" className="img-fluid"
-                                      alt="Responsive image">
-            </img>
-            </div>
             {/*<Navbar/>*/}
             {/*<Sections/>*/}
             <BookSection all={true}/>
