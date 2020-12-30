@@ -55,7 +55,7 @@ class BookSection extends React.Component {
             {/*<Navbar/>*/}
             {/*<Sections/>*/}
             <div className="container-fluid">
-            <CardColumns>
+            <CardColumns className="card-columns col-book">
                {books}
             </CardColumns>
                 {/*<Footer/>*/}

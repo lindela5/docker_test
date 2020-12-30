@@ -1,4 +1,4 @@
-.card {
+.book-card {
     /*width: 18rem;*/
     /*float: left;*/
     height: 27rem;
@@ -8,10 +8,14 @@
 }
 
 .card-img-top {
-    padding-top: 2rem;;
-    width: 150px;
+    padding-top: 2rem;
+
     height: 180px;
     text-align: center
+}
+
+.book-card  .card-img-top{
+    width: 150px;
 }
 
 .img-fluid {
@@ -25,7 +29,7 @@
     height: 50px;
 }
 
-.card-columns {
+.container-fluid .card-columns {
     padding-left: 15px;
     column-count: 4;
 

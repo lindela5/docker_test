@@ -32,13 +32,14 @@ function App() {
         //   </div>
         // );
         return (<div>
-                    <Navbar/>
-                    <Sections/>
-                    <BookSection all={true}/>
-                    {/*<span>{books}</span>// вызывать BookSection all="true/false"*/}
-                    <Footer/>
-            </div>
-        );
+            <Navbar/>
+            <Sections/>
+            <Main/>
+            {/*<BookSection all={true}/>*/}
+            {/*<span>{books}</span>// вызывать BookSection all="true/false"*/}
+            <Footer/>
+        </div>
+    );
 }
 
 export default App;

@@ -16,11 +16,11 @@ export class Main extends React.Component {
     render = () => {
 
         return (
-            // <div><span>sss</span></div>
+// <div><span>sss</span></div>
             <>
                 {/*<BrowserRouter>*/}
                 {/*<Switch>*/}
-                {/*<Route exact path="/" component={App}/>*/}
+                <Route exact path="/" render={() => <BookSection all={true}/>}/>
                 <Route exact path="/books" component={Books}/>
                 <Route exact path="/section/:id" component={BookSection}/>
                 {/*</Switch>*/}

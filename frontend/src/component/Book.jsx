@@ -21,9 +21,9 @@ export class Book extends React.Component {
     render = () => {
         const authors = this.props.book.bookAuthor.map(author => author.authorLastName).join(", ");
         console.log(this.props.book.bookAuthor)
-        return (<Card key={this.props.book.bookId} className="card">
+        return (<Card key={this.props.book.bookId} className="book-card">
                 {/*{this.props.book.bookTitle}*/}
-                <Card.Img className="card-img-top" variant="top" src={this.props.book.picture}/>
+                <Card.Img variant="top" src={this.props.book.picture}/>
                 <Card.Body>
                     {/*<CardTitle>{this.props.book.bookTitle}</CardTitle>*/}
                     <Card.Text>
