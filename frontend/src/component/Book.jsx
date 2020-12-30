@@ -33,7 +33,7 @@ export class Book extends React.Component {
                     </Card.Text>
 
                     <Button variant="primary" className="button">Купить</Button>
-                    <Button variant="primary" className="button">Добавить в избранное</Button>
+                    <Button variant="primary" className="button">В избранное</Button>
                 </Card.Body>
 
             </Card>)

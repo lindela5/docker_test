@@ -3,7 +3,12 @@ import React from 'react';
 import {Nav} from "react-bootstrap";
 
 const Navbar = () => {
-	return <Nav defaultActiveKey="/home" as="ul">
+	return <div>             <div className="flex-container flex-end"><p>admin</p></div>
+		<div className="fig"><img src="https://i.ibb.co/tzy7qSS/unnamed.png" className="img-fluid"
+								  alt="Responsive image">
+		</img>
+		</div>
+	<Nav defaultActiveKey="/home" as="ul" className="nav-menu">
 		<Nav.Item as="li">
 			<Nav.Link href="/"><li>Home</li></Nav.Link>
 		</Nav.Item>
@@ -11,6 +16,7 @@ const Navbar = () => {
 			<Nav.Link href="/books"><li>Books</li></Nav.Link>
 		</Nav.Item>
 	</Nav>
+	</div>
 };
 
 

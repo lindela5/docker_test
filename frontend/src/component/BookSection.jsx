@@ -47,18 +47,18 @@ class BookSection extends React.Component {
             this.state.books.map((book) => <Book key={book.bookId} book={book}/>) : <div>No such book</div>
 
         return (<div>
-            <div className="flex-container flex-end"><p>admin</p></div>
-            <div className="fig"><img src="https://i.ibb.co/tzy7qSS/unnamed.png" className="img-fluid"
-                                      alt="Responsive image">
-            </img>
-            </div>
-            <Navbar/>
-            <Sections/>
+            {/*<div className="flex-container flex-end"><p>admin</p></div>*/}
+            {/*<div className="fig"><img src="https://i.ibb.co/tzy7qSS/unnamed.png" className="img-fluid"*/}
+            {/*                          alt="Responsive image">*/}
+            {/*</img>*/}
+            {/*</div>*/}
+            {/*<Navbar/>*/}
+            {/*<Sections/>*/}
             <div className="container-fluid">
             <CardColumns>
                {books}
             </CardColumns>
-                <Footer/>
+                {/*<Footer/>*/}
             </div>
         </div>);
     }

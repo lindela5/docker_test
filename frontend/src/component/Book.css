@@ -47,12 +47,12 @@
 .button{
    padding: 2px;
     margin: 2px;
-    width: 8rem;
+    width: 7rem;
     height: 3rem;
 }
-/*.nav {*/
-/*    padding-left: 50px;*/
-/*}*/
+.nav-menu {
+    padding-left: 10rem;
+}
 .flex-container {
     display: flex;
     /*border:1px #ccc solid;*/
