@@ -1,13 +1,9 @@
 import logo from './logo.svg';
 import React from "react";
 import './App.css';
-import Books from "./component/Books.jsx";
-import {Route} from "react-router-dom";
 import {Main} from "./component/Main";
-import BookSection from "./component/BookSection";
 import Footer from "./component/Footer";
-import Navbar from "./component/Navbar";
-// import Footer from "./Footer";
+import Header from "./component/Header";
 import Sections from "./component/Sections";
 
 
@@ -32,7 +28,7 @@ function App() {
         //   </div>
         // );
         return (<div>
-            <Navbar/>
+            <Header/>
             <Sections/>
             <Main/>
             {/*<BookSection all={true}/>*/}

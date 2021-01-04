@@ -5,6 +5,7 @@ import com.innowise.darya.service.OrderService;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,6 +22,7 @@ public class OrderController {
 
 
         @GetMapping("/getbyid/{id}")
+        @PreAuthorize("hasAuthority('developers:write')")
          public OrderDTO getOrderById(@PathVariable long id) {
         log.info("Handling find by id request: " + id);
         return orderService.getOrderById(id);

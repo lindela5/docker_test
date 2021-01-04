@@ -48,13 +48,13 @@
     float: left;
 }
 
-.button{
+.book-card .button{
    padding: 2px;
     margin: 2px;
     width: 7rem;
     height: 3rem;
 }
-.nav-menu {
+.book-header .nav-menu {
     padding-left: 10rem;
 }
 .flex-container {

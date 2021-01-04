@@ -8,6 +8,7 @@ import com.innowise.darya.service.BookService;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -47,6 +48,7 @@ public class BookController {
 
 
     @PostMapping("/save")
+    @PreAuthorize("hasAuthority('developers:read')")
     public BookDTO saveBook(@RequestBody BookDTO bookDto) {
         log.info("Handling save users: " + bookDto);
         return bookService.saveBook(bookDto);
@@ -54,6 +56,7 @@ public class BookController {
 
 
     @GetMapping("/findAll")
+    @PreAuthorize("hasAuthority('developers:write')")
     public List<BookDTO> getAllBooks(){
         log.info("Handling find all users request");
         return bookService.getAllBooks();
@@ -67,6 +70,7 @@ public class BookController {
 
 
     @GetMapping("/getbyid")
+    @PreAuthorize("hasAuthority('developers:write')")
     public BookDTO getBookById(@RequestParam long id) {
         log.info("Handling find by id request: " + id);
         return bookService.getBookById(id);
@@ -75,6 +79,7 @@ public class BookController {
 
     //найти всех авторов, которые издавались в этот год
     @GetMapping("/getauthorbyyear/{year}")
+    @PreAuthorize("hasAuthority('developers:write')")
     public Set<AuthorDTO> getAuthorByYear(@RequestParam String year) {
         return bookService.getAuthorByYear(year);
     }
@@ -82,6 +87,7 @@ public class BookController {
 
 
     @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasAuthority('developers:read')")
     public ResponseEntity<Void> deleteBook(@PathVariable String id) {
         log.info("Handling delete user request: " + id);
         bookService.deleteBook(Long.valueOf(id));
@@ -90,6 +96,7 @@ public class BookController {
 
     //в каких секциях лежат книги
     @GetMapping("/getbysection/{section}")
+    @PreAuthorize("hasAuthority('developers:write')")
     public List<BookDTO> getBooksBySection(@PathVariable long section){
         return bookService.getBooksBySection(section);
     }

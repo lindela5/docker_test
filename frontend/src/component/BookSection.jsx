@@ -2,7 +2,7 @@ import React from "react";
 import Sections from "./Sections";
 import axios from "axios";
 import {Book} from "./Book";
-import Navbar from "./Navbar";
+import Navbar from "./Header";
 import Footer from "./Footer";
 import {CardColumns} from "react-bootstrap";
 // import {CardGroup, CardColumns} from 'reactstrap';

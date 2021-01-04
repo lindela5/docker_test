@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Navbar from "./Header";
 import axios from "axios";
 // import {Book} from "./Book";
 import Sections from "./Sections";
