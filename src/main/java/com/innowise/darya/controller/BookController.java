@@ -56,7 +56,8 @@ public class BookController {
 
 
     @GetMapping("/findAll")
-    @PreAuthorize("hasAuthority('developers:write')")
+   // @PreAuthorize("hasAuthority('developers:write')")
+    @PreAuthorize("permitAll()")
     public List<BookDTO> getAllBooks(){
         log.info("Handling find all users request");
         return bookService.getAllBooks();
