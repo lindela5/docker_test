@@ -9,13 +9,15 @@ class Sections extends React.Component {
     }
 
 
-
     componentDidMount() {
         const config = {
             headers: {'Accept': 'application/json'},
         };
         axios.get("/section/findAll", config)
-            .then(res => this.setState({sections: res.data}))
+            .then(res => {
+                console.log(res.data);
+                this.setState({sections: res.data})
+            })
             .catch(error => console.log(error))
     };
 

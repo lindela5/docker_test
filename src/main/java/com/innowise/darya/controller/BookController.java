@@ -80,7 +80,7 @@ public class BookController {
 
     //найти всех авторов, которые издавались в этот год
     @GetMapping("/getauthorbyyear/{year}")
-    @PreAuthorize("hasAuthority('developers:write')")
+    @PreAuthorize("permitAll()")
     public Set<AuthorDTO> getAuthorByYear(@RequestParam String year) {
         return bookService.getAuthorByYear(year);
     }
@@ -97,7 +97,7 @@ public class BookController {
 
     //в каких секциях лежат книги
     @GetMapping("/getbysection/{section}")
-    @PreAuthorize("hasAuthority('developers:write')")
+    @PreAuthorize("permitAll()")
     public List<BookDTO> getBooksBySection(@PathVariable long section){
         return bookService.getBooksBySection(section);
     }

@@ -14,6 +14,11 @@ import Books from "./Books";
 import './Book.css';
 
 
+// axios.get("/auth/login", config)
+//     .then(res => this.setState({sections: res.data}))
+//     .catch(error => console.log(error));
+
+
 const fakeAuth = {
     isAuthenticated: false,
     authenticate(cb) {
