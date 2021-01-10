@@ -22,8 +22,15 @@ import './Book.css';
 const fakeAuth = {
     isAuthenticated: false,
     authenticate(cb) {
-        this.isAuthenticated = true
-        setTimeout(cb, 100) // fake async
+        // this.isAuthenticated = true;
+        const config = {
+            headers: {'Accept': 'application/json', 'credentials': 'same-origin'}
+        };
+        axios.get("/auth/login", config)
+            .then(res => this.setState({sections: res.data}))
+            .catch(error => console.log(error));
+
+        //setTimeout(cb, 100) // fake async
     },
     signout(cb) {
         this.isAuthenticated = false
@@ -31,16 +38,15 @@ const fakeAuth = {
     }
 }
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({component: Component, ...rest}) => (
     <Route {...rest} render={(props) => (
         fakeAuth.isAuthenticated === true
             ? <Component {...props} />
-            : <Redirect to='/login' />
-    )} />
+            : <Redirect to='/login'/>
+    )}/>
 )
 
 export class Main extends React.Component {
-
 
 
     render = () => {
@@ -53,14 +59,13 @@ export class Main extends React.Component {
                 <Route exact path="/" render={() => <BookSection all={true}/>}/>
                 {/*<Route exact path="/books" component={Books}/>*/}
                 <Route exact path="/section/:id" component={BookSection}/>
-                <Route path="/login" component={LoginForm} />
-                <PrivateRoute path='/books' component={Books} />
+                <Route path="/login" component={LoginForm}/>
+                <PrivateRoute path='/books' component={Books}/>
                 {/*</Switch>*/}
                 {/*</BrowserRouter>*/}
             </>
         );
     };
-
 
 
 };
