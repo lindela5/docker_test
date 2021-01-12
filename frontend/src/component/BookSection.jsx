@@ -1,23 +1,15 @@
 import React from "react";
-import Sections from "./Sections";
 import axios from "axios";
 import {Book} from "./Book";
-import Navbar from "./Header";
-import Footer from "./Footer";
 import {CardColumns} from "react-bootstrap";
-// import {CardGroup, CardColumns} from 'reactstrap';
 import './Book.css';
 
 class BookSection extends React.Component {
+
     state = {
         sectionName: "",
         books: []
     }
-
-    constructor(props) {
-        super(props);
-    }
-
 
     getBooks = () => {
         const config = {headers: {'Accept': 'application/json'}};
@@ -55,9 +47,9 @@ class BookSection extends React.Component {
             {/*<Navbar/>*/}
             {/*<Sections/>*/}
             <div className="container-fluid">
-            <CardColumns className="card-columns col-book">
-               {books}
-            </CardColumns>
+                <CardColumns className="card-columns col-book">
+                    {books}
+                </CardColumns>
                 {/*<Footer/>*/}
             </div>
         </div>);

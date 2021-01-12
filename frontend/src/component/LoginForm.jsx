@@ -1,12 +1,9 @@
 import React, {useState} from 'react';
-
-import Box from '@material-ui/core/Box';
-import makeStyles from '@material-ui/core/styles/makeStyles';
-import useTheme from '@material-ui/core/styles/useTheme';
-
-
 import {Button, Form} from "react-bootstrap";
 import axios from "axios";
+import ReactModalLogin from 'react-modal-login';
+
+// import {facebookConfig, googleConfig} from "social-config";
 
 
 export const LoginForm = () => {
@@ -16,10 +13,8 @@ export const LoginForm = () => {
     const [loginData, setLoginData] = useState('');
     const [passwordData, setPasswordData] = useState('');
 
-    const [loginError, setLoginError] = useState(false);
-    const [passwordError, setPasswordError] = useState(false);
-
-    //const loginData = '', passwordData = '';
+    const [/*loginError,*/ setLoginError] = useState(false);
+    const [/*passwordError, */setPasswordError] = useState(false);
 
     const validate = () => {
         let valid = true;
@@ -38,12 +33,15 @@ export const LoginForm = () => {
         console.log(e);
         e.preventDefault();
         if (validate()) {
-            console.log((loginData, passwordData));
+            console.log(loginData + ' ' + passwordData);
             const config = {
                 headers: {'Accept': 'application/json'}
             };
-            axios.post("/auth/authenticate", {login: loginData, password: passwordData}, config)
-                .then(res => this.setState({user: res.data}))
+            axios.post("/auth/login", {login: loginData, password: passwordData}, config)
+                .then(res => {
+                    //this.setState({user: res.data});
+                    localStorage.setItem('user', res.data)
+                })
                 .catch(error => console.log(error));
         }
     }
@@ -109,5 +107,3 @@ export const LoginForm = () => {
         </Form>
     )
 }
-
-export default LoginForm;

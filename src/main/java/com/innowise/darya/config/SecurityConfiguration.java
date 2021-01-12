@@ -63,9 +63,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         HttpMethod.GET,
                         "/index** ", "/static/** ** ", "/** .js", "/** .json", "/** .ico")
                 .permitAll()
-                .antMatchers("/book/**")
-                .permitAll()
-                .antMatchers("/section/**")
+                .antMatchers("/book/**", "/section/**", "/auth/**")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -104,4 +102,3 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return daoAuthenticationProvider;
     }
 }
-

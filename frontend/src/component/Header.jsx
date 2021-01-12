@@ -1,23 +1,21 @@
 import React from 'react';
-// import {NavLink} from "react-router-dom";
 import {Nav} from "react-bootstrap";
 
 const Header = () => {
     return <div className="book-header">
         <div className="flex-container flex-end">
-            <a href="/login">Вход</a>
+            <a href="/login">Login</a>
         </div>
-        <div className="fig"><img src="https://i.ibb.co/tzy7qSS/unnamed.png" className="img-fluid"
-                                  alt="Responsive image">
-        </img>
+        <div className="fig">
+            <img src="https://i.ibb.co/tzy7qSS/unnamed.png" className="img-fluid" alt=""/>
         </div>
         <Nav defaultActiveKey="/home" as="ul" className="nav-menu">
-            <Nav.Item as="li">
+            <Nav.Item>
                 <Nav.Link href="/">
                     <li>Home</li>
                 </Nav.Link>
             </Nav.Item>
-            <Nav.Item as="li">
+            <Nav.Item>
                 <Nav.Link href="/books">
                     <li>Books</li>
                 </Nav.Link>
@@ -28,5 +26,4 @@ const Header = () => {
 
 
 export default Header;
-
 
