@@ -27,4 +27,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         log.info(account.getUsername() + " " + account.getPassword());
         return SecurityUser.fromUser(account);
     }
+    // еще один метод с логином и паролем метод login
+    // findByUsername(username) если нет ошибку ловит контролер
+    //если есть проверка пароля, кодировать и проверить пароль в акаунте
+    // если все хорошо возвращается userdetails
 }

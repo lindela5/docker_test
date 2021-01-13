@@ -3,18 +3,20 @@ import {LoginForm} from "./LoginForm";
 import {Modal} from "react-bootstrap";
 
 
-const ModalLogin = () => {
+const ModalLogin = (props) => {
+
+
 
     const [isOpen, setIsOpen] = React.useState(false);
     const [timer, setTimer] = React.useState(0);
     const [startTime, setStartTime] = React.useState(0);
     const [endTime, setEndTime] = React.useState(0);
 
-    const showModal = () => {
-        setIsOpen(true);
-        // setTitle("Modal Ready");
-        document.body.style.backgroundColor = "white";
-    };
+    // const showModal = () => {
+    //     setIsOpen(true);
+    //     // setTitle("Modal Ready");
+    //     document.body.style.backgroundColor = "white";
+    // };
 
     const hideModal = () => {
         setIsOpen(false);
@@ -39,10 +41,9 @@ const ModalLogin = () => {
 
 
     return <div>
-        <button onClick={showModal}>Display Modal</button>
+        {/*<button onClick={showModal}>Display Modal</button> ///через  props ->show model перенести в main*/}
         <Modal
-            show={isOpen}
-            onHide={hideModal}
+            show={props.show}
             onEnter={startTimer}
             onEntered={modalLoaded}
             onExit={onExit}
@@ -52,7 +53,7 @@ const ModalLogin = () => {
             <Modal.Header>
                 <Modal.Title>Hi</Modal.Title>
             </Modal.Header>
-            <Modal.Body><LoginForm/></Modal.Body>
+            <Modal.Body><LoginForm close = {true}/></Modal.Body>
             <Modal.Footer>This is the footer</Modal.Footer>
         </Modal>
     </div>

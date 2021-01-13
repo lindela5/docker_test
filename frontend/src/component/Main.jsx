@@ -53,7 +53,7 @@ export class Main extends React.Component {
                     <Route exact path="/" render={() => <BookSection all={true}/>}/>
                     {/*<Route exact path="/books" component={Books}/>*/}
                     <Route exact path="/section/:id" component={BookSection}/>
-                    <Route path="/login" component={ModalLogin}/>
+                    <Route path="/login" render={() => <ModalLogin show={true}/>}/> /// как booksection c showmodal
                     <PrivateRoute path='/books' component={Books}/>
                 </Switch>
             </>
