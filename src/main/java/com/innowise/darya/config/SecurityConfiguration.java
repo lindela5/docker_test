@@ -29,6 +29,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         this.userDetailsService = userDetailsService;
     }
 
+    @Autowired
+    RestAuthEntryPoint restAuthEntryPoint;
 
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
@@ -65,12 +67,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/book/**", "/section/**", "/auth/**")
                 .permitAll()
-                .anyRequest().authenticated()
+//                .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login")
-                //.loginProcessingUrl("/login")
-                .defaultSuccessUrl("/",true)
-                .failureUrl("/index.html?error=true");
+                .exceptionHandling()
+                .authenticationEntryPoint(restAuthEntryPoint)
+                .and()
+                .formLogin()
+                //.loginPage("/login")
+                .loginProcessingUrl("/login");
+//                .defaultSuccessUrl("/",true)
+//                .failureUrl("/index.html?error=true");
         //...
     }
 

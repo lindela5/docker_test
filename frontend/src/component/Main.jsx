@@ -1,5 +1,6 @@
 import React from "react";
 import {LoginForm} from "./LoginForm";
+import ModalLogin from "./ModalLogin";
 import BookSection from "./BookSection";
 import {
     Route,
@@ -52,7 +53,7 @@ export class Main extends React.Component {
                     <Route exact path="/" render={() => <BookSection all={true}/>}/>
                     {/*<Route exact path="/books" component={Books}/>*/}
                     <Route exact path="/section/:id" component={BookSection}/>
-                    <Route path="/login" component={LoginForm}/>
+                    <Route path="/login" component={ModalLogin}/>
                     <PrivateRoute path='/books' component={Books}/>
                 </Switch>
             </>
