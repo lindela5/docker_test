@@ -6,81 +6,33 @@ import ReactModalLogin from 'react-modal-login';
 // import {facebookConfig, googleConfig} from "social-config";
 
 
-export const LoginForm = () => {
+export const LoginForm  = ({ onSubmit }) => {
     // const theme = useTheme();
     // const classes = useStyles(theme);
 
-    const [loginData, setLoginData] = useState('');
-    const [passwordData, setPasswordData] = useState('');
+    const [loginData, setLoginData] = useState({...this.props.loginData});
+    const [passwordData, setPasswordData] = useState({...this.props.passwordData});
 
     const [/*loginError,*/ setLoginError] = useState(false);
     const [/*passwordError, */setPasswordError] = useState(false);
 
-    const validate = () => {
-        let valid = true;
-        if (loginData.trim().length < 1) {
-            setLoginError(true);
-            valid = false;
-        }
-        if (passwordData.trim().length < 1) {
-            setPasswordError(true);
-            valid = false;
-        }
-        return valid;
-    }
+    // const validate = () => {
+    //     let valid = true;
+    //     if (loginData.trim().length < 1) {
+    //         setLoginError(true);
+    //         valid = false;
+    //     }
+    //     if (passwordData.trim().length < 1) {
+    //         setPasswordError(true);
+    //         valid = false;
+    //     }
+    //     return valid;
+    // }
 
-    const handleSubmit = e => {
-        console.log(e);
-        e.preventDefault();
-        if (validate()) {
-            console.log(loginData + ' ' + passwordData);
-            const config = {
-                headers: {'Accept': 'application/json'}
-            };
-            axios.post("/auth/login", {login: loginData, password: passwordData}, config)
-                .then(res => {
-                    //this.setState({user: res.data});
-                    localStorage.setItem('user', res.data)
-                })
-                .catch(error => console.log(error));
-        }
-    }
 
 
     return (
-        // <Box >
-        //     <form
-        //         onSubmit={e => handleSubmit(e)}
-        //     >
-        //         <Box >
-        //             <input
-        //                 label="Login"
-        //                 value={loginData}
-        //                 error={loginError}
-        //                 onChange={e => {
-        //                     setLoginData(e.target.value);
-        //                     setLoginError(false);
-        //                 }}
-        //             />
-        //         </Box>
-        //         <Box >
-        //             <input
-        //                 variant="outlined"
-        //                 value={passwordData}
-        //                 error={passwordError}
-        //                 onChange={e => {
-        //                     setPasswordData(e.target.value);
-        //                     setPasswordError(false);
-        //                 }}
-        //             />
-        //         </Box>
-        //         <Box>
-        //             <Button variant="primary" type="submit">Войти</Button>
-        //         </Box>
-        //     </form>
-        // </Box>
-
-        <Form onSubmit={e => handleSubmit(e)}>
+        <Form onSubmit={onSubmit}>
             <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="textfield"
