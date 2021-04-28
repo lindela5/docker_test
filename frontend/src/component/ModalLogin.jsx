@@ -111,7 +111,7 @@ const ModalLogin = (props) => {
                 <Modal.Title>Login Form</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <LoginForm onSubmit={handleSubmit} loginData={loginData} passwordData={passwordData}/>
+                <LoginForm onSubmit={handleSubmit}/>
             </Modal.Body>
             <Modal.Footer>This is the footer</Modal.Footer>
         </Modal>
